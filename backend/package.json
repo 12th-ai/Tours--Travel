@@ -6,6 +6,7 @@
   "scripts": {
     "serve": "nodemon index.js"
   },
+  "proxy": "http://localhost:3000",
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -14,15 +15,17 @@
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
+    "express-validator": "^7.1.0",
     "fs": "^0.0.1-security",
+    "helmet": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
     "mysql": "^2.18.1",
     "mysql2": "^3.11.0",
     "nodemon": "^3.1.4",
     "path": "^0.12.7",
+    "redis": "^4.7.0",
     "sequelize": "^6.37.3",
     "sequelize-cli": "^6.6.2"
   }
 }
-
-

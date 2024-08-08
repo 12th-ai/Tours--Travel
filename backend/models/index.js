@@ -8,12 +8,14 @@ const sequelize = new Sequelize('hanio', 'root', '', {
 
 // Import models
 const User = require('./User')(sequelize, Sequelize.DataTypes);
+const Tour = require('./Tour')(sequelize, Sequelize.DataTypes);
 
 // Create an object to hold the Sequelize instance and models
 const db = {
   sequelize,
   Sequelize,  
-  User
+  User,
+  Tour
 };
 
 // Sync the models with the database
