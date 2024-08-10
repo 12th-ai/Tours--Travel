@@ -6,6 +6,11 @@ import '../assets/Style/client_style/style.css'
 function ClientLayout() {
   return (
     <div>
+   <div className="headder">
+      <div className="offer">
+         <h1>black friday big offer</h1>
+      </div>
+   </div>
 <ClientNav />
         <Outlet /> 
        
