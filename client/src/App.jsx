@@ -1,74 +1,192 @@
-// import React from 'react'
-// import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
+import React from 'react'
+import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 
 
-// // layout routers 
-// import DashboardLayout from './Layout/DashboardLayout';
-// import ClientLayout from './Layout/ClientLayout';
-// import Pnf from './Layout/Pnf';
-// import Home from './pages/Home';
+// layout routers 
+import DashboardLayout from './Layout/DashboardLayout';
+import ClientLayout from './Layout/ClientLayout';
+import Pnf from './Layout/Pnf';
+import Home from './pages/Client/Home';
+import AuthLayout from './pages/server/AuthLayout';
+import DashLayout from './pages/server/Protected';
+import Login from './Component/Dashboard/Auth/Login';
+import Register from './Component/Dashboard/Auth/Register';
+import Summary from './Component/Dashboard/WIdget/Summary';
+import DestinationLayout from './Component/Dashboard/Destination/DestinationLayout';
+import Gallary from './Component/Dashboard/Gallery/Gallary';
+import Package from './Component/Dashboard/Tour_package/Package';
+import ViewDestination from './Component/Dashboard/Destination/ViewDestination';
+import AddDestination from './Component/Dashboard/Destination/AddDestination';
+import Updatedestination from './Component/Dashboard/Destination/Updatedestination';
+import ViewGallery from './Component/Dashboard/Gallery/ViewGallery';
+import AddGallery from './Component/Dashboard/Gallery/AddGallery';
+import UpdateGallery from './Component/Dashboard/Gallery/UpdateGallery';
+import ViewPackage from './Component/Dashboard/Tour_package/ViewPackage';
+import AddPackage from './Component/Dashboard/Tour_package/AddPackage';
+import UpadatePackage from './Component/Dashboard/Tour_package/UpadatePackage';
+import Testmonial from './Component/Dashboard/Testmonials/Testmonial';
+import AddTestimonial from './Component/Dashboard/Testmonials/AddTestimonial';
+import UpdateTestmonial from './Component/Dashboard/Testmonials/UpdateTestmonial';
+import ViewTestimonial from './Component/Dashboard/Testmonials/ViewTestimonial';
 
 
-// const router = createBrowserRouter([
-//   {
-//     path: '/',
-//     element: <ClientLayout />,
-//     children: [
-//       {
-//         index: true,
-//         element: <Home />,
-//       },
-//     ],
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <ClientLayout />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+    ],
 
-//   },
+  },
 
 
-//   { path: "/dashboard", element: <DashboardLayout /> },
-//   { path: "*", element: <Pnf /> }, // Default route
-// ])
-// function App() {
-//   return (
-//     <div>
-//       <RouterProvider router={router} />
-//     </div>
-//   )
-// }
+  { 
+    path:"/dashboard", 
+    element: <DashboardLayout />,
+    children:[
+      {
+        path:'',
+        element:<AuthLayout />,
+        children:[
+          {
+            index:true,
+            element:<Login />,
+          },
+          {
+            path:'register',
+            element:<Register />
+          }
+        ]
+      },
+    {
+      path:'protected',
+      element:<DashLayout />,
+      
+      children:[
 
-// export default App
+     {
+      
+      index:true,
+      element:<Summary />
+     },
+     
+     {
+      path:'destination',
+      element:<DestinationLayout />,
+      
+      children:[
+        {
+          index:true,
+          element:<ViewDestination />
+        },
+        {
+          path:'add',
+          element:<AddDestination />,
+        },
+        {
+          path:'update:id',
+          element:<Updatedestination />
+        }
+      ]
+     },
+     
+     {
+      path:'gallery',
+      element:<Gallary />,
 
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Register from './Component/testing/Register';
-import Login from './Component/testing/Login';
-import AdminDashboard from './Component/testing/AdminDashboard';
-import Home from './Component/testing/Home'; // Assuming you have a Home component
-// import DestinationFormUP from './Component/testing/Update';
-import DestinationForm from './Component/testing/Add';
-import DestinationTable from './Component/testing/DestinationTable';
+      children:[
+  
+        {
+          index:true,
+          element:<ViewGallery />
+        },
+        {
+          path:'addgallery',
+          element:<AddGallery />
+        },
+        {
+          path:'update:id',
+          element:<UpdateGallery />
+        }
 
-const App = () => {
-  const isAuthenticated = !!document.cookie.split(';').find(c => c.trim().startsWith('jwt='));
+      ]
+     },
 
+     {
+
+      path:'testimonial',
+      element:<Testmonial />,
+      children:[
+        {
+         index:true,
+         element:<ViewTestimonial />
+        },
+        {
+          path:'addtest',
+          element:<AddTestimonial />
+
+        },
+
+        {
+          path:'updatetest',
+          element:<UpdateTestmonial />
+        }
+      ]
+     },
+
+
+     {
+      path:'package',
+
+      element:<Package />,
+
+      children:[
+
+       {
+   
+        index:true,
+        element:<ViewPackage />
+        
+       } ,
+
+       {
+        path:'addpackage',
+         element:<AddPackage />
+       },
+       {
+
+        path:'update:id',
+        element:<UpadatePackage />
+       }
+      ]
+
+     
+      
+     }
+
+
+      ]
+    }
+
+    ]
+
+},
+  { path: "*", element: <Pnf /> }, // Default route
+])
+function App() {
   return (
-    <Router>
-      <Routes>
-      <Route path="/" element={<DestinationTable />} />
-                <Route path="/edit-destination/:id" element={<DestinationForm />} />
-                <Route path="/add-destination" element={<DestinationForm />} />
+    <div>
+      <RouterProvider router={router} />
+    </div>
+  )
+}
 
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+export default App
 
-        <Route 
-          path="/dashboard" 
-          element={isAuthenticated ? <AdminDashboard /> : <Navigate to="/login" replace />} 
-        />
-        <Route path="*" element={<Navigate to="/" />} /> {/* Redirect any unknown route to Home */}
-      </Routes>
-    </Router>
-  );
-};
 
-export default App;
 
 

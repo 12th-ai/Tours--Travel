@@ -1,7 +1,7 @@
 import React from 'react'
-import Lhome from '../Component/Lhome'
-import Subscribe from '../Component/Subscribe'
-import Footer from '../Component/Footer'
+import Lhome from '../../Component/Lhome'
+import Subscribe from '../../Component/Subscribe'
+import Footer from '../../Component/Footer'
 
 function Home() {
   return (
