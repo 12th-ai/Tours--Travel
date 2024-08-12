@@ -42,6 +42,9 @@ import Register from './Component/testing/Register';
 import Login from './Component/testing/Login';
 import AdminDashboard from './Component/testing/AdminDashboard';
 import Home from './Component/testing/Home'; // Assuming you have a Home component
+// import DestinationFormUP from './Component/testing/Update';
+import DestinationForm from './Component/testing/Add';
+import DestinationTable from './Component/testing/DestinationTable';
 
 const App = () => {
   const isAuthenticated = !!document.cookie.split(';').find(c => c.trim().startsWith('jwt='));
@@ -49,9 +52,13 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} /> {/* Add this route for the root path */}
+      <Route path="/" element={<DestinationTable />} />
+                <Route path="/edit-destination/:id" element={<DestinationForm />} />
+                <Route path="/add-destination" element={<DestinationForm />} />
+
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+
         <Route 
           path="/dashboard" 
           element={isAuthenticated ? <AdminDashboard /> : <Navigate to="/login" replace />} 
