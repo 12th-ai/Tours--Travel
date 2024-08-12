@@ -1,38 +1,36 @@
-import React from 'react'
+import React from "react";
 import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 
-
-// layout routers 
-import DashboardLayout from './Layout/DashboardLayout';
-import ClientLayout from './Layout/ClientLayout';
-import Pnf from './Layout/Pnf';
-import Home from './pages/Client/Home';
-import AuthLayout from './pages/server/AuthLayout';
-import DashLayout from './pages/server/Protected';
-import Login from './Component/Dashboard/Auth/Login';
-import Register from './Component/Dashboard/Auth/Register';
-import Summary from './Component/Dashboard/WIdget/Summary';
-import DestinationLayout from './Component/Dashboard/Destination/DestinationLayout';
-import Gallary from './Component/Dashboard/Gallery/Gallary';
-import Package from './Component/Dashboard/Tour_package/Package';
-import ViewDestination from './Component/Dashboard/Destination/ViewDestination';
-import AddDestination from './Component/Dashboard/Destination/AddDestination';
-import Updatedestination from './Component/Dashboard/Destination/Updatedestination';
-import ViewGallery from './Component/Dashboard/Gallery/ViewGallery';
-import AddGallery from './Component/Dashboard/Gallery/AddGallery';
-import UpdateGallery from './Component/Dashboard/Gallery/UpdateGallery';
-import ViewPackage from './Component/Dashboard/Tour_package/ViewPackage';
-import AddPackage from './Component/Dashboard/Tour_package/AddPackage';
-import UpadatePackage from './Component/Dashboard/Tour_package/UpadatePackage';
-import Testmonial from './Component/Dashboard/Testmonials/Testmonial';
-import AddTestimonial from './Component/Dashboard/Testmonials/AddTestimonial';
-import UpdateTestmonial from './Component/Dashboard/Testmonials/UpdateTestmonial';
-import ViewTestimonial from './Component/Dashboard/Testmonials/ViewTestimonial';
-
+// layout routers
+import DashboardLayout from "./Layout/DashboardLayout";
+import ClientLayout from "./Layout/ClientLayout";
+import Pnf from "./Layout/Pnf";
+import Home from "./pages/Client/Home";
+import AuthLayout from "./pages/server/AuthLayout";
+import DashLayout from "./pages/server/Protected";
+import Login from "./Component/Dashboard/Auth/Login";
+import Register from "./Component/Dashboard/Auth/Register";
+import Summary from "./Component/Dashboard/WIdget/Summary";
+import DestinationLayout from "./Component/Dashboard/Destination/DestinationLayout";
+import Gallary from "./Component/Dashboard/Gallery/Gallary";
+import Package from "./Component/Dashboard/Tour_package/Package";
+import ViewDestination from "./Component/Dashboard/Destination/ViewDestination";
+import AddDestination from "./Component/Dashboard/Destination/AddDestination";
+import Updatedestination from "./Component/Dashboard/Destination/Updatedestination";
+import ViewGallery from "./Component/Dashboard/Gallery/ViewGallery";
+import AddGallery from "./Component/Dashboard/Gallery/AddGallery";
+import UpdateGallery from "./Component/Dashboard/Gallery/UpdateGallery";
+import ViewPackage from "./Component/Dashboard/Tour_package/ViewPackage";
+import AddPackage from "./Component/Dashboard/Tour_package/AddPackage";
+import UpadatePackage from "./Component/Dashboard/Tour_package/UpadatePackage";
+import Testmonial from "./Component/Dashboard/Testmonials/Testmonial";
+import AddTestimonial from "./Component/Dashboard/Testmonials/AddTestimonial";
+import UpdateTestmonial from "./Component/Dashboard/Testmonials/UpdateTestmonial";
+import ViewTestimonial from "./Component/Dashboard/Testmonials/ViewTestimonial";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <ClientLayout />,
     children: [
       {
@@ -40,153 +38,129 @@ const router = createBrowserRouter([
         element: <Home />,
       },
     ],
-
   },
 
-
-  { 
-    path:"/dashboard", 
+  {
+    path: "/dashboard",
     element: <DashboardLayout />,
-    children:[
+    children: [
       {
-        path:'',
-        element:<AuthLayout />,
-        children:[
+        path: "",
+        element: <AuthLayout />,
+        children: [
           {
-            index:true,
-            element:<Login />,
+            index: true,
+            element: <Login />,
           },
           {
-            path:'register',
-            element:<Register />
-          }
-        ]
+            path: "register",
+            element: <Register />,
+          },
+        ],
       },
-    {
-      path:'protected',
-      element:<DashLayout />,
-      
-      children:[
+      {
+        path: "protected",
+        element: <DashLayout />,
 
-     {
-      
-      index:true,
-      element:<Summary />
-     },
-     
-     {
-      path:'destination',
-      element:<DestinationLayout />,
-      
-      children:[
-        {
-          index:true,
-          element:<ViewDestination />
-        },
-        {
-          path:'add',
-          element:<AddDestination />,
-        },
-        {
-          path:'update:id',
-          element:<Updatedestination />
-        }
-      ]
-     },
-     
-     {
-      path:'gallery',
-      element:<Gallary />,
+        children: [
+          {
+            index: true,
+            element: <Summary />,
+          },
 
-      children:[
-  
-        {
-          index:true,
-          element:<ViewGallery />
-        },
-        {
-          path:'addgallery',
-          element:<AddGallery />
-        },
-        {
-          path:'update:id',
-          element:<UpdateGallery />
-        }
+          {
+            path: "destination",
+            element: <DestinationLayout />,
 
-      ]
-     },
+            children: [
+              {
+                index: true,
+                element: <ViewDestination />,
+              },
+              {
+                path: "add",
+                element: <AddDestination />,
+              },
+              {
+                path: "update:id",
+                element: <Updatedestination />,
+              },
+            ],
+          },
 
-     {
+          {
+            path: "gallery",
+            element: <Gallary />,
 
-      path:'testimonial',
-      element:<Testmonial />,
-      children:[
-        {
-         index:true,
-         element:<ViewTestimonial />
-        },
-        {
-          path:'addtest',
-          element:<AddTestimonial />
+            children: [
+              {
+                index: true,
+                element: <ViewGallery />,
+              },
+              {
+                path: "addgallery",
+                element: <AddGallery />,
+              },
+              {
+                path: "update:id",
+                element: <UpdateGallery />,
+              },
+            ],
+          },
 
-        },
+          {
+            path: "testimonial",
+            element: <Testmonial />,
+            children: [
+              {
+                index: true,
+                element: <ViewTestimonial />,
+              },
+              {
+                path: "addtest",
+                element: <AddTestimonial />,
+              },
 
-        {
-          path:'updatetest',
-          element:<UpdateTestmonial />
-        }
-      ]
-     },
+              {
+                path: "updatetest",
+                element: <UpdateTestmonial />,
+              },
+            ],
+          },
 
+          {
+            path: "package",
 
-     {
-      path:'package',
+            element: <Package />,
 
-      element:<Package />,
+            children: [
+              {
+                index: true,
+                element: <ViewPackage />,
+              },
 
-      children:[
-
-       {
-   
-        index:true,
-        element:<ViewPackage />
-        
-       } ,
-
-       {
-        path:'addpackage',
-         element:<AddPackage />
-       },
-       {
-
-        path:'update:id',
-        element:<UpadatePackage />
-       }
-      ]
-
-     
-      
-     }
-
-
-      ]
-    }
-
-    ]
-
-},
+              {
+                path: "addpackage",
+                element: <AddPackage />,
+              },
+              {
+                path: "update:id",
+                element: <UpadatePackage />,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
   { path: "*", element: <Pnf /> }, // Default route
-])
+]);
 function App() {
   return (
     <div>
       <RouterProvider router={router} />
     </div>
-  )
+  );
 }
 
-export default App
-
-
-
-
+export default App;
