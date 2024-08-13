@@ -27,6 +27,10 @@ import Testmonial from "./Component/Dashboard/Testmonials/Testmonial";
 import AddTestimonial from "./Component/Dashboard/Testmonials/AddTestimonial";
 import UpdateTestmonial from "./Component/Dashboard/Testmonials/UpdateTestmonial";
 import ViewTestimonial from "./Component/Dashboard/Testmonials/ViewTestimonial";
+import ForgotPassword from "./Component/Dashboard/Auth/Forgotpassword";
+import ResetPassword from "./Component/Dashboard/Auth/Resetpassword";
+// import { AuthProvider } from './Context/AuthContext';
+
 
 const router = createBrowserRouter([
   {
@@ -56,6 +60,14 @@ const router = createBrowserRouter([
             path: "register",
             element: <Register />,
           },
+       {
+        path:'forgot',
+        element:<ForgotPassword />
+       },
+       {
+        path:'reset',
+        element:<ResetPassword />
+       }
         ],
       },
       {
@@ -158,7 +170,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div>
+
       <RouterProvider router={router} />
+
     </div>
   );
 }

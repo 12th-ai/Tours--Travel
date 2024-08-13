@@ -1,0 +1,89 @@
+
+@import '../client_style/dash.scss';
+aside {
+padding: 15px 0;
+background: $used_color;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+height: 100vh;
+border-right: 1px solid #f0f0f02f;
+transition: .5s;
+width: 100%;
+.logo{
+display: flex;
+margin: 30px auto 50px;
+display: flex;
+align-items: center;
+flex-direction: column;
+img{
+width: 110px;
+height: 110px;
+-webkit-user-drag: none;
+user-select: none;
+transition: .5s;
+}
+span{
+text-align: center;
+margin: 6px 0 10px;
+color: transparent;
+background: $grad;
+font-size: 1.1rem;
+text-transform: uppercase;
+font-weight: 600;
+letter-spacing: 1px;
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+user-select: none;
+transition: 2s !important;
+white-space: nowrap;
+}
+}
+a, .logOut{
+cursor: pointer;
+padding: 13px 14px;
+display: flex;
+align-items: center;
+color: rgb(204, 195, 195);
+text-decoration: none;
+font-size: .9rem;
+column-gap: 10px;
+border-right: 4px solid transparent;
+transition: .5s;
+span{
+transition: inherit;
+width: 100%;
+overflow: hidden;
+white-space: nowrap;
+}
+&:not(.router-link-active){
+&:hover{
+  background: $used_color_much;
+}
+}
+svg{
+width:26px;
+height: 26px;
+fill: rgb(190, 181, 181);
+display: flex;
+flex-shrink: 0;
+position: relative;
+left: 0;
+transition: .5s;
+
+}
+&.router-link-active{
+color: white;
+background: $used_color_light;
+border-right: 4px solid $used_blue;
+svg{
+  fill: white;
+}
+}
+}
+nav{
+display: flex;
+flex-direction: column;
+}
+}

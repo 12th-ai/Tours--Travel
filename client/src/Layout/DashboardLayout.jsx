@@ -1,10 +1,12 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import AuthLayout from '../pages/server/AuthLayout'
+import '../assets/Style/client_style/dash.css'
+
 function DashboardLayout() {
   return (
     <div>
-      <h1>Dashboard Layout</h1>
+     
       <Outlet />
 
     </div>

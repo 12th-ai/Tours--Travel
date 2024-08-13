@@ -11,7 +11,7 @@ function ClientNav() {
         <NavLink to="/about">services</NavLink>
         <NavLink to="/about">destination</NavLink>
         <NavLink to="/about">packages</NavLink>
-        <NavLink to="/about">news and update</NavLink>
+        {/* <NavLink to="/about">news and update</NavLink> */}
         <NavLink to="/about">contact us</NavLink>
       </div>
       <div className="icon">loginss</div>

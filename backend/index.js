@@ -9,6 +9,7 @@ const cors = require("cors");
 dotenv.config();
 
 const app = express();
+app.use(cookieParser());
 
 // Middleware for parsing URL-encoded and JSON bodies
 app.use(express.urlencoded({ extended: true }));
@@ -51,6 +52,8 @@ app.use((err, req, res, next) => {
 
 // Sync Database and start server
 const PORT = process.env.PORT || 3000;
+
+
 
 
 

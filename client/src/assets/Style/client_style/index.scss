@@ -23,12 +23,13 @@ html {
 }
 
 ::-webkit-scrollbar {
-  background: transparent;
+  background: $used_blue;
   width: 7px;
 }
 
 body {
-  background-color: aliceblue;
+  // background-color: aliceblue;
+  background-color: $used_color_light ;
   overflow-x: hidden;
   text-transform: capitalize;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -40,6 +41,23 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+
+.redirect{
+  font-size: 12px;
+}
+
+.forgot{
+  margin-top: 20px;
+  font-size: 12px;
+  a{
+    font-size: 15px;
+    color: $used_blue;
+    text-decoration: none;
+  
+    font-size: 13px;
+  }
+}
+
 
 .nav {
   // border:2px solid red;
@@ -69,21 +87,26 @@ body {
   .links {
     // border: 2px solid red;
     padding: 10px;
-    width: 60%;
+    width: 45%;
     display: flex;
     // flex-direction: column;
     justify-content: space-between;
     text-transform: capitalize;
+    // border: 2PX SOLID green;
 
     a {
       text-decoration: none;
       color: #161f23;
-      font-size: 17px;
+      font-size: 15px;
       background-color: $grad;
       font-weight: 500;
-      padding: 10px;
+      padding:5px;
       transition: 1s;
+      padding-left: 2PX;
+      
       transition-duration: 1s;
+      // border: 2PX SOLID red;
+
 
       &:hover {
         color: transparent;
