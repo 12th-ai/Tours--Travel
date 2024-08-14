@@ -10,7 +10,7 @@ function Lhome() {
        <div className="right-side">
        <div className="index"></div>
         <div className="absolute">
-          <h1>travel && <br /> adventu re</h1>
+          <h1>travel && <br /> adventure</h1>
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium, perferendis mollitia aut itaque voluptatibus saepe consequuntur neque tempora quae? Explicabo?</p>
     <a href="">explore more</a>
         </div>

@@ -23,21 +23,6 @@ body {
   height: 100vh;
 }
 
-.redirect {
-  font-size: 12px;
-}
-
-.forgot {
-  margin-top: 20px;
-  font-size: 12px;
-}
-.forgot a {
-  font-size: 15px;
-  color: hsl(220, 69.7%, 61.18%);
-  text-decoration: none;
-  font-size: 13px;
-}
-
 .nav {
   display: flex;
   align-items: center;
@@ -155,6 +140,7 @@ body {
   text-decoration: none;
   color: #ffffff;
   background: linear-gradient(to right, #f4e185, hsl(220, 69.7%, 61.18%));
+  transition: 1s;
 }
 
 .index {
@@ -166,6 +152,48 @@ body {
 
 .headder {
   background-color: #161f23;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.headder .right-icon {
+  width: 30%;
+  cursor: pointer;
+}
+.headder .right-icon svg {
+  width: 30px;
+  fill: hsl(220, 69.7%, 61.18%);
+  height: 20px;
+  margin-left: 29px;
+  transition: 1s;
+}
+.headder .right-icon svg:hover {
+  fill: #f4e185;
+  transform: scale(1.2);
+}
+.headder .left-icon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.headder .left-icon .part-contact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 20px;
+  color: whitesmoke;
+}
+.headder .left-icon .part-contact p {
+  font-size: 13px;
+  cursor: pointer;
+}
+.headder .left-icon .part-contact svg {
+  width: 13px;
+  height: 13px;
+  fill: white;
+  color: white;
+  margin-left: 20px;
+  margin-right: 5px;
 }
 .headder .offer {
   text-align: center;
@@ -254,6 +282,9 @@ body {
   text-align: justify;
   margin-bottom: 10px;
   margin-left: 40px;
+}
+.subscribe .subscribe_form .text-paragraph h1 {
+  font-size: 40px;
 }
 .subscribe .subscribe_form .text-paragraph p {
   margin-top: 10px;

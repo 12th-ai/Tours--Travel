@@ -48,6 +48,22 @@
               text-decoration: none;
        }
 }
+
+.redirect{
+  font-size: 12px;
+}
+
+.forgot{
+  margin-top: 20px;
+  font-size: 12px;
+  a{
+    font-size: 15px;
+    color: $used_blue;
+    text-decoration: none;
+  
+    font-size: 13px;
+  }
+}
      
      form.tabledForm{
        button{
