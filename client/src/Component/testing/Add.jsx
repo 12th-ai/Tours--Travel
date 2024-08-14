@@ -43,39 +43,22 @@ const DestinationForm = () => {
     return (
         <form onSubmit={handleSubmit}>
             <input
-                type="text"
-                placeholder="Title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                required
-            />
-            <textarea
-                placeholder="Description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                required
-            ></textarea>
-            <input
-                type="text"
-                placeholder="Place"
-                value={place}
-                onChange={(e) => setPlace(e.target.value)}
-                required
-            />
-
-            {images.map((_, index) => (
-                <input
-                    key={index}
-                    type="file"
-                    placeholder={`Image ${index + 1}`}
-                    onChange={(e) => handleImageChange(index, e)}
-                    required={index === 0}
-                />
-            ))}
-
+          <form onSubmit={event => { { handleSubmit; } }}>
+          <input type="text" name="username" placeholder="Username" onChange={event => { { handleChange; } }} />
+          <input type="email" name="email" placeholder="Email" onChange={event => { { handleChange; } }} />
+          <input type="password" name="password" placeholder="Password" onChange={event => { { handleChange; } }} /></form>
             <button type="submit">Add Destination</button>
         </form>
     );
 };
 
 export default DestinationForm;
+
+
+<form onSubmit={event => { { handleSubmit; } }}>
+      <h2>Forgot Password</h2>
+      <input type="email" value="{email}" onChange={event => { // TODO: Fix event handler code
+`{(e)`; }} =="" /> setEmail(e.target.value)}
+        placeholder="Enter your email"
+        required
+      /></form>

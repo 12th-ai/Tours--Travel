@@ -29,6 +29,7 @@ import UpdateTestmonial from "./Component/Dashboard/Testmonials/UpdateTestmonial
 import ViewTestimonial from "./Component/Dashboard/Testmonials/ViewTestimonial";
 import ForgotPassword from "./Component/Dashboard/Auth/Forgotpassword";
 import ResetPassword from "./Component/Dashboard/Auth/Resetpassword";
+import TableSummary from "./Component/Dashboard/WIdget/TableSummary";
 // import { AuthProvider } from './Context/AuthContext';
 
 
@@ -78,6 +79,10 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <Summary />,
+          },
+          {
+            path:'summary',
+            element:<TableSummary />,
           },
 
           {

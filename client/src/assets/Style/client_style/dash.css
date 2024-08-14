@@ -14,10 +14,10 @@ html {
   width: 7px;
 }
 
-.vue-notification .notifcation-content {
+.custom-toast-container .notifcation-content {
   font-size: 1px;
 }
-.vue-notification.success {
+.custom-toast-container.success {
   background: #0b4d7c !important;
   border-left-color: #1697f4 !important;
 }
@@ -35,6 +35,12 @@ html {
 
 .redirect {
   font-size: 12px;
+}
+
+.summary {
+  border: 2px solid red;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .forgot {
@@ -93,10 +99,15 @@ body {
   height: 100vh;
   width: 100vw;
   background: #161f23;
+  padding: 30px 50px 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+.form-page #form-otp {
+  padding: 30px;
+  border-radius: 10px;
 }
 .form-page h1, .form-page main .router .router-page .innerPage p.center, main .router .router-page .innerPage .form-page p.center, .form-page main .router .router-page .innerPage p.sametitle, main .router .router-page .innerPage .form-page p.sametitle {
   font-size: 1rem;
@@ -110,10 +121,18 @@ body {
 }
 .form-page .form {
   width: 450px;
-  padding: 30px 50px 40px;
+  padding: 10px 50px 10px;
   background: #18222a;
   border-radius: 20px;
   border: 1px solid rgba(240, 240, 240, 0.2666666667);
+  border: 1px solid rgba(240, 240, 240, 0.2666666667);
+}
+.form-page .form #otp {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
 }
 .form-page .form p.formTitle {
   font-size: 0.9rem;
@@ -133,13 +152,14 @@ body {
   justify-content: center;
   width: -moz-fit-content;
   width: fit-content;
-  margin: 10px auto;
+  margin: 20px auto;
+  height: 80px;
 }
 .form-page .form .logo img {
-  width: 80px;
-  height: 80px;
+  width: 50px;
+  height: 50px;
   display: flex;
-  margin: 0 auto;
+  margin-bottom: 30px;
 }
 .form-page .form .logo p {
   text-align: center;
@@ -170,7 +190,7 @@ body {
   margin-top: 0px !important;
 }
 .form-page .form form .crd:not(:first-of-type) {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 .form-page .form form .crd input, .form-page .form form .crd select {
   padding: 8px 15px 8px 35px;
@@ -228,10 +248,13 @@ body {
   fill: rgb(219, 208, 208);
 }
 .form-page .form form .crd .crd-input.otp-input-check {
-  border: 1px solid transparent;
+  border: 1px solid white;
   display: flex;
   justify-content: center;
   width: 100%;
+}
+.form-page .form form .crd .crd-input.otp-input-check input {
+  border: 2px solid white;
 }
 .form-page .form form .crd .crd-input.otp-input-check div div span {
   color: #f4e185;
@@ -460,6 +483,7 @@ main .router .router-page .innerPage .data-cards {
   display: grid;
   grid-template-columns: repeat(3, 32.2580645161%);
   justify-content: space-between;
+  gap: 20px;
 }
 main .router .router-page .innerPage .data-cards .data-card {
   padding: 20px;
@@ -972,6 +996,6 @@ main.hide-nav .popUp {
   left: 90px;
 }
 
-.vue-notification {
+.custom-toast-container {
   font-size: 14px !important;
 }/*# sourceMappingURL=dash.css.map */

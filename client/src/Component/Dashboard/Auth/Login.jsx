@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-// import { useAuth } from "../../../Context/AuthContext";
-
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const Login = () => {
 
@@ -11,7 +10,9 @@ const Login = () => {
     username: "",
     password: "",
   });
+  const [message, setMessage] = useState('');
   const navigate = useNavigate();
+
 
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -26,13 +27,25 @@ const Login = () => {
           'Content-Type': 'application/json'
         }
       });
-      console.log('Login response:', response.data);
-      navigate("/dashboard/protected");
+
+    
+        toast.success(response.data.message, {
+            autoClose: 2500 // Notification will be displayed for 2 seconds
+        });
+        setTimeout(() => {
+            navigate('/dashboard/protected'); // Redirect to login page after 2 seconds
+        }, 3200);
 
     } catch (error) {
-      console.error("Login failed:", error);
+      if (error.response && error.response.data && error.response.data.message) {
+        toast.error(error.response.data.message, { autoClose: 10000 });
+      } else {
+        toast.error('incorrect credentialss', { autoClose: 10000 });
+      }
+      console.error('Login failed:', error);
       // Optionally handle the error here, e.g., display a message to the user
     }
+
   };
 
   return (
@@ -90,7 +103,7 @@ const Login = () => {
 
             <div className="redirect">
               <p>
-                don't have account ? <Link>register</Link>
+                don't have account ? <Link to='/dashboard/register'>register</Link>
              
               </p>
             </div>

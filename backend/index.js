@@ -30,6 +30,7 @@ const testimonialRoutes = require('./Router/testimonialRoutes');
 const authRoutes = require("./Router/UserRouter");
 const destinationRoutes = require('./Router/destination'); // Adjust path if necessary
 const gallaryRouter = require('./Router/Gallery')
+const summaryRoute = require('./Router/summary');
 
 
 app.use('/api/testimonials', testimonialRoutes);
@@ -37,12 +38,14 @@ app.use('/api/auth', authRoutes);
 app.use('/api/destinations', destinationRoutes);
 app.use('/api/gallery',gallaryRouter);
 
+
 const tourGuideRoutes = require('./Router/tourGuideRoutes');
 app.use('/api/tour-guides', tourGuideRoutes);
 
 
 const tourPackageRoutes = require('./Router/tourPackageRoutes');
 app.use('/api/tour-guides', tourPackageRoutes);
+app.use('/api', summaryRoute);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

@@ -43,7 +43,7 @@ const loginUser = async (req, res) => {
         }
 
         const token = jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET, {
-            expiresIn: '1h',
+            expiresIn: '7d',
         });
 
         res.cookie('token', token, { httpOnly: true });
@@ -189,27 +189,27 @@ const forgotPassword = async (req, res) => {
     }
   };
   
-  const resetPassword = async (req, res) => {
-    try {
-      const { email, otp, newPassword } = req.body;
+  // const resetPassword = async (req, res) => {
+  //   try {
+  //     const { email, otp, newPassword } = req.body;
   
-      const user = await User.findOne({ where: { email, otp } });
+  //     const user = await User.findOne({ where: { email, otp } });
   
-      if (!user || user.otpExpires < Date.now()) {
-        return res.status(400).json({ message: 'Invalid OTP or OTP expired' });
-      }
+  //     if (!user || user.otpExpires < Date.now()) {
+  //       return res.status(400).json({ message: 'Invalid OTP or OTP expired' });
+  //     }
   
-      await user.update({
-        password: await bcrypt.hash(newPassword, 10),
-        otp: null,
-        otpExpires: null
-      });
+  //     await user.update({
+  //       password: await bcrypt.hash(newPassword, 10),
+  //       otp: null,
+  //       otpExpires: null
+  //     });
   
-      res.status(200).json({ message: 'Password reset successfully' });
-    } catch (error) {
-      res.status(500).json({ message: 'Something went wrong', error });
-    }
-  };
+  //     res.status(200).json({ message: 'Password reset successfully' });
+  //   } catch (error) {
+  //     res.status(500).json({ message: 'Something went wrong', error });
+  //   }
+  // };
 
   // const nodemailer = require('nodemailer');
 
@@ -235,6 +235,72 @@ transporter.sendMail(mailOptions, (error, info) => {
   console.log('Email sent: ' + info.response);
 });
 
+const verifyOtp = async (req, res) => {
+  const { email, otp } = req.body;
+
+  try {
+    // Find the user by email
+    const user = await User.findOne({ where: { email } });
+
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'User not found' });
+    }
+
+    // Log the details for debugging
+    console.log('Stored OTP:', user.otp);
+    console.log('Provided OTP:', otp);
+    console.log('OTP Expiration:', user.otpExpires);
+    console.log('Current Time:', Date.now());
+
+
+
+    // Check if OTP matches and is not expired
+    if (String(user.otp) === String(otp)) {
+      return res.status(200).json({ success: true, message: 'OTP verified' });
+    } else {
+      return res.status(400).json({ success: false, message: 'Invalid or expired OTP' });
+    }
+  } catch (error) {
+    return res.status(500).json({ success: false, message: 'Server error', error });
+  }
+};
+
+
+// Controller to reset password
+const resetPassword = async (req, res) => {
+  const { email, otp, newPassword } = req.body;
+
+  try {
+    // Find the user by email
+    const user = await User.findOne({ where: { email } });
+
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'User not found' });
+    }
+
+    // Verify the OTP again as an extra precaution
+    if (user.otp === otp) {
+      // Hash the new password
+      const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+      // Update the user's password and clear the OTP
+      user.password = hashedPassword;
+      user.otp = null; // Clear the OTP
+      user.otpExpiration = null; // Clear the OTP expiration
+      await user.save();
+
+      return res.status(200).json({ success: true, message: 'Password reset successful' });
+    } else {
+      return res.status(400).json({ success: false, message: 'Invalid or expired OTP' });
+    }
+  } catch (error) {
+    return res.status(500).json({ success: false, message: 'Server error', error });
+  }
+};
+
+module.exports = { verifyOtp, resetPassword };
+
+
   
   
 module.exports = {
@@ -245,8 +311,9 @@ module.exports = {
     deleteUser,
     logout,
     getSummary,
-    resetPassword,
-    forgotPassword
+    verifyOtp,
+    forgotPassword,
+    resetPassword
  
     
 
