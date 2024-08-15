@@ -99,10 +99,15 @@ body {
   height: 100vh;
   width: 100vw;
   background: #161f23;
+  padding: 30px 50px 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+.form-page #form-otp {
+  padding: 30px;
+  border-radius: 10px;
 }
 .form-page h1, .form-page main .router .router-page .innerPage p.center, main .router .router-page .innerPage .form-page p.center, .form-page main .router .router-page .innerPage p.sametitle, main .router .router-page .innerPage .form-page p.sametitle {
   font-size: 1rem;
@@ -118,7 +123,16 @@ body {
   width: 450px;
   padding: 10px 50px 10px;
   background: #18222a;
+  border-radius: 20px;
   border: 1px solid rgba(240, 240, 240, 0.2666666667);
+  border: 1px solid rgba(240, 240, 240, 0.2666666667);
+}
+.form-page .form #otp {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
 }
 .form-page .form p.formTitle {
   font-size: 0.9rem;
@@ -234,10 +248,13 @@ body {
   fill: rgb(219, 208, 208);
 }
 .form-page .form form .crd .crd-input.otp-input-check {
-  border: 1px solid transparent;
+  border: 1px solid white;
   display: flex;
   justify-content: center;
   width: 100%;
+}
+.form-page .form form .crd .crd-input.otp-input-check input {
+  border: 2px solid white;
 }
 .form-page .form form .crd .crd-input.otp-input-check div div span {
   color: #f4e185;

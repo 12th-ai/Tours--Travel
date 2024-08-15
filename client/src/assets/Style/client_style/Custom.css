@@ -1,0 +1,120 @@
+/* ConfirmModal.css */
+.confirm-modal-overlay {
+       position: fixed;
+       top: 0;
+       left: 0;
+       right: 0;
+       bottom: 0;
+       background: rgba(0, 0, 0, 0.5);
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       z-index: 1000;
+     }
+     
+     .confirm-modal {
+       background: white;
+       padding: 20px;
+       border-radius: 8px;
+       text-align: center;
+     }
+     
+     .confirm-modal-buttons {
+       display: flex;
+       justify-content: space-around;
+       margin-top: 20px;
+     }
+     
+     .confirm-button, .cancel-button {
+       padding: 10px 20px;
+       cursor: pointer;
+       width: 150px;
+     }
+     
+     .confirm-button {
+       background-color: #4caf50;
+       color: white;
+       border: none;
+       border-radius: 4px;
+     }
+     
+     .cancel-button {
+       background-color:crimson;
+       color: white;
+       border: none;
+       border-radius: 4px;
+     }
+     
+
+     .package-details-container {
+       padding: 20px;
+       display: flex;
+       flex-direction: column;
+       gap: 20px;
+     }
+     
+     .top-section {
+       display: flex;
+       gap: 20px;
+       align-items: flex-start;
+     }
+     
+     .image-section {
+       flex: 1;
+     }
+     
+     .main-image {
+       width: 100%;
+       height: auto;
+       border-radius: 8px;
+       object-fit: cover;
+     }
+     
+     .description-section {
+       flex: 1;
+     }
+     
+     .description-section h1 {
+       font-size: 24px;
+       margin-bottom: 10px;
+     }
+     
+     .description-section p {
+       font-size: 16px;
+       line-height: 1.5;
+     }
+     
+     .bottom-section {
+       display: flex;
+       gap: 20px;
+       align-items: flex-start;
+     }
+     
+     .info-table {
+       flex: 1;
+     }
+     
+     .info-table table {
+       width: 100%;
+       border-collapse: collapse;
+     }
+     
+     .info-table td {
+       padding: 10px;
+       border-bottom: 1px solid #ddd;
+     }
+     
+     .images-section {
+       flex: 1;
+       display: flex;
+       gap: 10px;
+       flex-direction: column;
+     }
+     
+     .small-image {
+       width: 100%;
+       height: auto;
+       border-radius: 8px;
+       object-fit: cover;
+     }
+     

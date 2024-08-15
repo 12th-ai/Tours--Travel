@@ -54,7 +54,7 @@ exports.updateTourPackage = async (req, res) => {
 exports.getTourPackages = async (req, res) => {
     try {
         const tourPackages = await TourPackage.findAll({
-            attributes: ['id', 'title', 'location', 'image1', 'image2', 'image3'],
+            attributes: ['id', 'title','pricing','travelPlan','location', 'image1', 'image2', 'image3'],
         });
         res.status(200).json(tourPackages);
     } catch (error) {

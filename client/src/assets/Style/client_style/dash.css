@@ -192,7 +192,8 @@ body {
 .form-page .form form .crd:not(:first-of-type) {
   margin-top: 20px;
 }
-.form-page .form form .crd input, .form-page .form form .crd select {
+.form-page .form form .crd input,
+.form-page .form form .crd select {
   padding: 8px 15px 8px 35px;
   width: 100%;
   outline: none;
@@ -200,7 +201,8 @@ body {
   background: none;
   color: rgb(219, 208, 208);
 }
-.form-page .form form .crd input[class=otp-input], .form-page .form form .crd select[class=otp-input] {
+.form-page .form form .crd input[class=otp-input],
+.form-page .form form .crd select[class=otp-input] {
   border: 1px solid cyan;
 }
 .form-page .form form .crd .crd-input {
@@ -293,13 +295,16 @@ body {
        column-gap: 10px;
   justify-content: space-between;
 }
-.form-page .form form span.redirect a, .form-page .form form span.redirect span.action {
+.form-page .form form span.redirect a,
+.form-page .form form span.redirect span.action {
   position: relative;
 }
-.form-page .form form span.redirect a:hover::before, .form-page .form form span.redirect span.action:hover::before {
+.form-page .form form span.redirect a:hover::before,
+.form-page .form form span.redirect span.action:hover::before {
   width: 25px;
 }
-.form-page .form form span.redirect a::before, .form-page .form form span.redirect span.action::before {
+.form-page .form form span.redirect a::before,
+.form-page .form form span.redirect span.action::before {
   position: absolute;
   bottom: -5px;
   width: 0;
@@ -325,7 +330,8 @@ body {
   right: 0;
   background: #1697f4;
 }
-.form-page .form form a.reset, .form-page .form form span.reset {
+.form-page .form form a.reset,
+.form-page .form form span.reset {
   position: relative;
   display: flex;
   width: -moz-fit-content;
@@ -338,10 +344,12 @@ body {
   font-size: 0.86rem;
   cursor: pointer;
 }
-.form-page .form form a.reset.back, .form-page .form form span.reset.back {
+.form-page .form form a.reset.back,
+.form-page .form form span.reset.back {
   color: #f4e185;
 }
-.form-page .form form a.reset:hover, .form-page .form form span.reset:hover {
+.form-page .form form a.reset:hover,
+.form-page .form form span.reset:hover {
   text-decoration: underline;
 }
 .form-page .form form button {
@@ -589,7 +597,8 @@ main .router .router-page .innerPage .data-table .titles .title-actions {
        column-gap: 10px;
   align-items: center;
 }
-main .router .router-page .innerPage .data-table .titles .title-actions a, main .router .router-page .innerPage .data-table .titles .title-actions button {
+main .router .router-page .innerPage .data-table .titles .title-actions a,
+main .router .router-page .innerPage .data-table .titles .title-actions button {
   border-radius: 5px;
   padding: 6px 15px;
   background: linear-gradient(to right, #f4e185, #1697f4);
@@ -600,7 +609,8 @@ main .router .router-page .innerPage .data-table .titles .title-actions a, main 
   border: none;
   cursor: pointer;
 }
-main .router .router-page .innerPage .data-table .titles .title-actions a.svgBtn, main .router .router-page .innerPage .data-table .titles .title-actions button.svgBtn {
+main .router .router-page .innerPage .data-table .titles .title-actions a.svgBtn,
+main .router .router-page .innerPage .data-table .titles .title-actions button.svgBtn {
   display: flex;
   width: -moz-fit-content;
   width: fit-content;
@@ -608,7 +618,8 @@ main .router .router-page .innerPage .data-table .titles .title-actions a.svgBtn
        column-gap: 10px;
   align-items: center;
 }
-main .router .router-page .innerPage .data-table .titles .title-actions a.svgBtn svg, main .router .router-page .innerPage .data-table .titles .title-actions button.svgBtn svg {
+main .router .router-page .innerPage .data-table .titles .title-actions a.svgBtn svg,
+main .router .router-page .innerPage .data-table .titles .title-actions button.svgBtn svg {
   width: 25px;
   height: 25px;
 }
@@ -651,7 +662,8 @@ main .router .router-page .innerPage .data-table table tbody tr td {
 main .router .router-page .innerPage .data-table table tbody tr td.upper {
   text-transform: uppercase;
 }
-main .router .router-page .innerPage .data-table table tbody tr td a, main .router .router-page .innerPage .data-table table tbody tr td button {
+main .router .router-page .innerPage .data-table table tbody tr td a,
+main .router .router-page .innerPage .data-table table tbody tr td button {
   border: none;
   border-radius: 5px;
   padding: 5px 15px;
@@ -665,23 +677,27 @@ main .router .router-page .innerPage .data-table table tbody tr td a, main .rout
   background: rgb(219, 208, 208);
   color: #18222a;
 }
-main .router .router-page .innerPage .data-table table tbody tr td a[disabled=true], main .router .router-page .innerPage .data-table table tbody tr td button[disabled=true] {
+main .router .router-page .innerPage .data-table table tbody tr td a[disabled=true],
+main .router .router-page .innerPage .data-table table tbody tr td button[disabled=true] {
   opacity: 0.4;
   pointer-events: none;
   cursor: pointer;
 }
-main .router .router-page .innerPage .data-table table tbody tr td a.del, main .router .router-page .innerPage .data-table table tbody tr td button.del {
+main .router .router-page .innerPage .data-table table tbody tr td a.del,
+main .router .router-page .innerPage .data-table table tbody tr td button.del {
   background: rgb(192, 63, 49);
   color: white;
   position: relative;
 }
-main .router .router-page .innerPage .data-table table tbody tr td a.del:hover .delete-prompt, main .router .router-page .innerPage .data-table table tbody tr td button.del:hover .delete-prompt {
+main .router .router-page .innerPage .data-table table tbody tr td a.del:hover .delete-prompt,
+main .router .router-page .innerPage .data-table table tbody tr td button.del:hover .delete-prompt {
   opacity: 1;
   pointer-events: all;
   cursor: default;
   transform: scale(1);
 }
-main .router .router-page .innerPage .data-table table tbody tr td a.del .delete-prompt, main .router .router-page .innerPage .data-table table tbody tr td button.del .delete-prompt {
+main .router .router-page .innerPage .data-table table tbody tr td a.del .delete-prompt,
+main .router .router-page .innerPage .data-table table tbody tr td button.del .delete-prompt {
   position: absolute;
   width: 250px;
   bottom: 100%;
@@ -693,7 +709,8 @@ main .router .router-page .innerPage .data-table table tbody tr td a.del .delete
   transform-origin: bottom right;
   transition: 0.5s;
 }
-main .router .router-page .innerPage .data-table table tbody tr td a.del .delete-prompt .delete-prompt-text, main .router .router-page .innerPage .data-table table tbody tr td button.del .delete-prompt .delete-prompt-text {
+main .router .router-page .innerPage .data-table table tbody tr td a.del .delete-prompt .delete-prompt-text,
+main .router .router-page .innerPage .data-table table tbody tr td button.del .delete-prompt .delete-prompt-text {
   background: #d0342c;
   padding: 15px;
   border-radius: 6px;
@@ -703,10 +720,12 @@ main .router .router-page .innerPage .data-table table tbody tr td a.del .delete
   row-gap: 7px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.199);
 }
-main .router .router-page .innerPage .data-table table tbody tr td a.del .delete-prompt .delete-prompt-text span, main .router .router-page .innerPage .data-table table tbody tr td button.del .delete-prompt .delete-prompt-text span {
+main .router .router-page .innerPage .data-table table tbody tr td a.del .delete-prompt .delete-prompt-text span,
+main .router .router-page .innerPage .data-table table tbody tr td button.del .delete-prompt .delete-prompt-text span {
   font-size: 0.85rem;
 }
-main .router .router-page .innerPage .data-table table tbody tr td a.del .delete-prompt button, main .router .router-page .innerPage .data-table table tbody tr td button.del .delete-prompt button {
+main .router .router-page .innerPage .data-table table tbody tr td a.del .delete-prompt button,
+main .router .router-page .innerPage .data-table table tbody tr td button.del .delete-prompt button {
   width: -moz-fit-content;
   width: fit-content;
   background: #18222a;
@@ -719,7 +738,8 @@ main .router .router-page .innerPage .data-links {
        column-gap: 10px;
   row-gap: 10px;
 }
-main .router .router-page .innerPage .data-links button, main .router .router-page .innerPage .data-links span {
+main .router .router-page .innerPage .data-links button,
+main .router .router-page .innerPage .data-links span {
   padding: 7px 13px;
   font-size: 0.8rem;
   cursor: pointer;
@@ -907,7 +927,8 @@ main .router .popUp .popUp-card form.popForm .pop-part-form .crd label {
   font-size: 0.85rem;
   margin-bottom: 5px;
 }
-main .router .popUp .popUp-card form.popForm .pop-part-form .crd input, main .router .popUp .popUp-card form.popForm .pop-part-form .crd select {
+main .router .popUp .popUp-card form.popForm .pop-part-form .crd input,
+main .router .popUp .popUp-card form.popForm .pop-part-form .crd select {
   padding: 8px 15px 8px 0px;
   width: 100%;
   outline: none;
@@ -950,28 +971,34 @@ main.hide-nav aside .logo span {
   transition: 0.1s !important;
   overflow: hidden;
 }
-main.hide-nav aside a, main.hide-nav aside .logOut {
+main.hide-nav aside a,
+main.hide-nav aside .logOut {
   padding: 13px 13px;
   justify-content: center;
   border-right: 4px solid transparent;
 }
-main.hide-nav aside a span, main.hide-nav aside .logOut span {
+main.hide-nav aside a span,
+main.hide-nav aside .logOut span {
   opacity: 0;
   pointer-events: none;
   width: 0;
 }
-main.hide-nav aside a:not(.router-link-active):hover, main.hide-nav aside .logOut:not(.router-link-active):hover {
+main.hide-nav aside a:not(.router-link-active):hover,
+main.hide-nav aside .logOut:not(.router-link-active):hover {
   background: #161f23;
 }
-main.hide-nav aside a.router-link-active, main.hide-nav aside .logOut.router-link-active {
+main.hide-nav aside a.router-link-active,
+main.hide-nav aside .logOut.router-link-active {
   color: white;
   background: #2c393e;
   border-right: 4px solid #1697f4;
 }
-main.hide-nav aside a.router-link-active svg, main.hide-nav aside .logOut.router-link-active svg {
+main.hide-nav aside a.router-link-active svg,
+main.hide-nav aside .logOut.router-link-active svg {
   fill: white;
 }
-main.hide-nav aside a svg, main.hide-nav aside .logOut svg {
+main.hide-nav aside a svg,
+main.hide-nav aside .logOut svg {
   left: 5px;
 }
 main.hide-nav .topNav .nav-l .sidenav span:last-of-type {
@@ -998,4 +1025,112 @@ main.hide-nav .popUp {
 
 .custom-toast-container {
   font-size: 14px !important;
+}
+
+.addpackage {
+  width: 100%;
+}
+.addpackage h3 {
+  color: white;
+  margin-left: 30px;
+}
+.addpackage .selectedimage {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  padding: 20px;
+}
+.addpackage .selectedimage img {
+  width: 90%;
+  margin: 10px;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.addpackage .form-page {
+  width: 95%;
+  margin: auto;
+  height: auto;
+  background-color: #2c393e;
+  padding: 20px;
+}
+.addpackage .form-page .form {
+  width: 100%;
+  border: 20x solid green;
+  margin: 30px;
+  height: 100%;
+}
+.addpackage .form-page .form form {
+  padding-bottom: 20px;
+}
+.addpackage .form-page .form form textarea {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 20px;
+}
+.addpackage .form-page .form form input[type=file] {
+  background-color: transparent;
+}
+
+.custom-quill .ql-container {
+  height: 300px; /* Increase the editor height */
+}
+
+.crd .custom-quill .ql-toolbar {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.crd .custom-quill .ql-toolbar button {
+  background-color: #1697f4;
+  margin: 10px;
+}
+.crd .custom-quill .ql-snow {
+  text-align: center;
+}
+.crd .custom-quill .ql-snow .ql-picker-options {
+  background-color: transparent;
+  width: auto;
+  border-radius: 4px; /* Adds rounded corners */
+  padding: 5px; /* Adds padding */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+  position: absolute;
+  left: -150px;
+}
+.crd .custom-quill .ql-snow .ql-picker-options .ql-picker-item {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.crd .custom-quill .ql-snow .ql-picker-options .ql-picker-item:hover {
+  background-color: rgba(255, 0, 0, 0.1); /* Adds hover effect */
+}
+.crd .custom-quill .ql-snow .ql-picker-options .ql-active {
+  background-color: rgba(255, 0, 0, 0.2); /* Adds active state background */
+}
+.crd .custom-quill .ql-snow .ql-editor {
+  background-color: transparent;
+  color: white;
+  overflow-x: hidden;
+  width: 100%;
+}
+.crd .custom-quill .ql-snow span {
+  width: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+}
+.crd .custom-quill .ql-snow span .ql-size {
+  background-color: transparent;
+}
+.crd .custom-quill .ql-snow span .ql-size .ql-picker-label {
+  margin-left: 40px;
+  display: none;
+}
+
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value=small]::before, .ql-snow .ql-picker.ql-size .ql-picker-item[data-value=small]::before {
+  color: red;
 }/*# sourceMappingURL=dash.css.map */

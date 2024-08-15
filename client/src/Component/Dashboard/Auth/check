@@ -1,0 +1,165 @@
+<template>
+ 
+
+<script>
+import HomeAdmin from '@/views/dashboard/admin/HomeAdmin.vue';
+import ClientDashboard from '@/views/dashboard/client/HomeClient.vue'
+import axios  from 'axios';
+export default {
+  name: "LoginPage",
+  components: { HomeAdmin, ClientDashboard },
+  data() {
+    return {
+      showAdmin: false, 
+      adminUsername: '',
+      adminPassword: '',
+      parentPhone: '',
+      parentPassword: '',
+      showAdminPassword: false,
+      loading: false
+    }
+  },
+  methods: {
+    switchPage() {
+      this.showAdmin = !this.showAdmin;
+    },
+    changeAdminPasswordType() {
+      this.showAdminPassword = !this.showAdminPassword
+    },
+    loginAdmin() {
+      this.loading = true;
+      let data = { username: this.adminUsername, password: this.adminPassword }
+      setTimeout(() => {
+        axios.post('http://localhost/ecash/src/php/auth/loginadmin.php',data)
+          .then(response => {
+            this.loading = false
+            if(response.data.error){
+              this.$notify({
+                title: response.data.responseTitle,
+                text: response.data.responseMessage,
+                type: "error"
+              });
+            } else {
+              this.$notify({
+                title: response.data.responseTitle,
+                text: response.data.responseMessage,
+                type: "success"
+              });
+              let data = {
+                logged: "true",
+                dashboard: 'admin',
+                loggedUser: response.data.responseResult
+              }
+              sessionStorage.setItem('userLogged', JSON.stringify(response.data.responseResult))
+              sessionStorage.setItem('userLoggedBool', JSON.stringify(true))
+              sessionStorage.setItem('userLoggedDash', 'admin')
+              setTimeout(() => {
+                this.$store.dispatch('loginChangeSessionStorage', data);
+              }, 1);
+            }
+            console.log(response)
+          })
+          .catch(error => {
+            console.log(error);
+          }
+        )
+      },1);
+    },
+    loginParent() {
+      this.loading = true;
+      let data = { phone: this.parentPhone, password: this.parentPassword }
+      if(this.parentPhone.toString().length != 10){
+        this.$notify({
+          title: "Invalid",
+          text: "Phone Number Must Be Exactly 10 Numbers",
+          type: "error"
+        });
+        this.loading = false;
+      } else {
+        setTimeout(() => {
+          axios.post('http://localhost/ecash/src/php/auth/client/loginclient.php', data)
+            .then(response => {
+              this.loading = false
+              if(response.data.error){
+                this.$notify({
+                  title: response.data.responseTitle,
+                  text: response.data.responseMessage,
+                  type: "error"
+                });
+              } else if(response.data.warn) {
+                this.$notify({
+                  title: response.data.responseTitle,
+                  text: response.data.responseMessage,
+                  type: "info"
+                });
+              } else {
+                this.$notify({
+                  title: response.data.responseTitle,
+                  text: response.data.responseMessage,
+                  type: "success"
+                });
+                let data = {
+                  logged: "true",
+                  dashboard: 'parent',
+                  loggedUser: response.data.responseResult
+                }
+                sessionStorage.setItem('userLogged', JSON.stringify(response.data.responseResult))
+                sessionStorage.setItem('userLoggedBool', JSON.stringify(true))
+                sessionStorage.setItem('userLoggedDash', 'parent')
+                setTimeout(() => {
+                  this.$store.dispatch('loginChangeSessionStorage', data);
+                }, 1);
+              }
+              // else {
+              //   this.$notify({
+              //     title: response.data.responseTitle,
+              //     text: response.data.responseMessage,
+              //     type: "success"
+              //   });
+              //   let data = {
+              //     logged: "true",
+              //     dashboard: 'admin',
+              //     loggedUser: response.data.responseResult
+              //   }
+              //   sessionStorage.setItem('userLogged', JSON.stringify(response.data.responseResult))
+              //   sessionStorage.setItem('userLoggedBool', JSON.stringify(true))
+              //   sessionStorage.setItem('userLoggedDash', 'admin')
+              //   setTimeout(() => {
+              //     this.$store.dispatch('loginChangeSessionStorage', data);
+              //   }, 1000);
+              // }
+              console.log(response)
+            })
+            .catch(error => {
+              console.log(error);
+            }
+          )
+        }, 500);
+      }
+    }
+  },
+  computed: {
+    adminPasswordCheck(){
+      if(this.adminPassword.length > 0){
+        return true;
+      } else {
+        return false;
+      }
+    }, 
+    adminPasswordType() {
+      if(this.showAdminPassword == true){
+        return 'text';
+      } else {
+        return 'password';
+      }
+    },
+    logStatus() {
+      return this.$store.state.logInInfo;
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+  @import '@/scss/style.scss';
+</style>

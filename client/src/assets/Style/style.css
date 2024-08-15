@@ -1,0 +1,951 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: poppins;
+}
+
+html {
+  font-size: 16px;
+}
+
+::-webkit-scrollbar {
+  background: transparent;
+  width: 7px;
+}
+
+.vue-notification .notifcation-content {
+  font-size: 1px;
+}
+.vue-notification.success {
+  background: #0b4d7c !important;
+  border-left-color: #1697f4 !important;
+}
+
+form.tabledForm button {
+  padding: 8px 15px;
+  display: flex;
+  width: -moz-fit-content;
+  width: fit-content;
+  justify-content: center;
+  border-radius: 5px;
+  border: none;
+  background: linear-gradient(to right, #f4e185, #1697f4);
+  position: relative;
+  cursor: pointer;
+  font-weight: 500;
+  z-index: 1;
+  bottom: 0;
+  transition: 0.5s;
+  transform: scale(1);
+  margin: 15px auto 0;
+}
+form.tabledForm button.loading {
+  opacity: 0.5;
+  transform: scale(0.95);
+  pointer-events: none;
+}
+
+input[type=file] {
+  display: none;
+}
+
+input[type=checkbox] {
+  accent-color: #f4e185;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1697f4;
+}
+
+body {
+  background: #2c393e;
+}
+
+.form-page {
+  height: 100vh;
+  width: 100vw;
+  background: #161f23;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.form-page h1, .form-page main .router .router-page .innerPage p.center, main .router .router-page .innerPage .form-page p.center, .form-page main .router .router-page .innerPage p.sametitle, main .router .router-page .innerPage .form-page p.sametitle {
+  font-size: 1rem;
+  color: white;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.form-page h1 span, .form-page main .router .router-page .innerPage p.center span, main .router .router-page .innerPage .form-page p.center span, .form-page main .router .router-page .innerPage p.sametitle span, main .router .router-page .innerPage .form-page p.sametitle span {
+  color: #f4e185;
+}
+.form-page .form {
+  width: 450px;
+  padding: 30px 50px 40px;
+  background: #18222a;
+  border-radius: 20px;
+  border: 1px solid rgba(240, 240, 240, 0.2666666667);
+}
+.form-page .form p.formTitle {
+  font-size: 0.9rem;
+  color: rgb(216, 206, 206);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.form-page .form p.formTitle span {
+  color: #1697f4;
+}
+.form-page .form .logo {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 10px auto;
+}
+.form-page .form .logo img {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  margin: 0 auto;
+}
+.form-page .form .logo p {
+  text-align: center;
+  margin: 6px 0 10px;
+  color: transparent;
+  background: linear-gradient(to right, #f4e185, #1697f4);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.form-page .form form .part {
+  display: grid;
+  margin-top: 10px !important;
+  grid-template-columns: 48% 48%;
+  justify-content: space-between;
+}
+.form-page .form form .part .crd {
+  margin: 0 !important;
+}
+.form-page .form form .part .crd:not(:first-of-type) {
+  margin-top: 0px !important;
+}
+.form-page .form form .crd:not(:first-of-type) {
+  margin-top: 10px;
+}
+.form-page .form form .crd input, .form-page .form form .crd select {
+  padding: 8px 15px 8px 35px;
+  width: 100%;
+  outline: none;
+  border: none;
+  background: none;
+  color: rgb(219, 208, 208);
+}
+.form-page .form form .crd input[class=otp-input], .form-page .form form .crd select[class=otp-input] {
+  border: 1px solid cyan;
+}
+.form-page .form form .crd .crd-input {
+  position: relative;
+  border: 1px solid rgba(240, 240, 240, 0.2666666667);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.form-page .form form .crd .crd-input p {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  padding: 0 9px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  height: 100%;
+  font-size: 0.8rem;
+  background: #18222a;
+}
+.form-page .form form .crd .crd-input p span {
+  opacity: 0;
+  transition: 0.5s;
+  color: #1697f4;
+}
+.form-page .form form .crd .crd-input p.active span {
+  pointer-events: all;
+  opacity: 1;
+}
+.form-page .form form .crd .crd-input .icon {
+  width: 19px;
+  height: 19px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 7px;
+}
+.form-page .form form .crd .crd-input .icon svg {
+  width: 100%;
+  height: 100%;
+  fill: rgb(219, 208, 208);
+}
+.form-page .form form .crd .crd-input.otp-input-check {
+  border: 1px solid transparent;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.form-page .form form .crd .crd-input.otp-input-check div div span {
+  color: #f4e185;
+}
+.form-page .form form .crd .crd-input.otp-input-check div div input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px 5px;
+  text-align: center;
+  border: 1px solid rgba(240, 240, 240, 0.2666666667) !important;
+  border-radius: 5px;
+  height: 30px;
+  width: 30px;
+  margin: 0 10px;
+  transition: 0.5s;
+}
+.form-page .form form .crd .crd-input.otp-input-check div div input:focus {
+  border: 1px solid #f4e185 !important;
+}
+.form-page .form form .crd .crd-input.otp-input-check div div input.is-complete {
+  border: 1px solid #1697f4 !important;
+}
+.form-page .form form .crd label {
+  color: white;
+  font-size: 0.85rem;
+  margin-bottom: 5px;
+}
+.form-page .form form span.redirect {
+  display: flex;
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: white;
+  display: flex;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+  justify-content: space-between;
+}
+.form-page .form form span.redirect a, .form-page .form form span.redirect span.action {
+  position: relative;
+}
+.form-page .form form span.redirect a:hover::before, .form-page .form form span.redirect span.action:hover::before {
+  width: 25px;
+}
+.form-page .form form span.redirect a::before, .form-page .form form span.redirect span.action::before {
+  position: absolute;
+  bottom: -5px;
+  width: 0;
+  height: 3px;
+  border-radius: 3px;
+  transition: 0.5s;
+  left: 0;
+  content: "";
+}
+.form-page .form form span.redirect a {
+  color: #f4e185;
+  text-decoration: none;
+}
+.form-page .form form span.redirect a:before {
+  background: #f4e185;
+}
+.form-page .form form span.redirect span.action {
+  color: #1697f4;
+  cursor: pointer;
+}
+.form-page .form form span.redirect span.action:before {
+  left: unset;
+  right: 0;
+  background: #1697f4;
+}
+.form-page .form form a.reset, .form-page .form form span.reset {
+  position: relative;
+  display: flex;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 10px auto 0;
+  text-align: center;
+  color: rgb(216, 206, 206);
+  opacity: 0.8;
+  text-decoration: none;
+  font-size: 0.86rem;
+  cursor: pointer;
+}
+.form-page .form form a.reset.back, .form-page .form form span.reset.back {
+  color: #f4e185;
+}
+.form-page .form form a.reset:hover, .form-page .form form span.reset:hover {
+  text-decoration: underline;
+}
+.form-page .form form button {
+  padding: 8px 15px;
+  display: flex;
+  width: 100%;
+  margin-top: 15px;
+  justify-content: center;
+  border-radius: 5px;
+  border: none;
+  background: linear-gradient(to right, #f4e185, #1697f4);
+  position: relative;
+  cursor: pointer;
+  font-weight: 500;
+  z-index: 1;
+  bottom: 0;
+  transition: 0.5s;
+  transform: scale(1);
+}
+.form-page .form form button.fit {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 15px auto 0;
+  padding: 8px 30px;
+}
+.form-page .form form button.loading {
+  opacity: 0.5;
+  transform: scale(0.95);
+  pointer-events: none;
+}
+.form-page .form form button:hover {
+  bottom: 3px;
+}
+
+main {
+  height: 100vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 25% 75%;
+  transition: 0.4s;
+}
+main .router {
+  height: 100vh;
+  overflow-y: auto;
+  position: relative;
+  width: 100%;
+}
+main .router::before {
+  position: fixed;
+  content: "";
+  width: 75%;
+  height: 30px;
+  background: linear-gradient(to top, #161f23, transparent);
+  bottom: 0;
+  left: 25%;
+  transition: 0.5s;
+}
+main .router .router-page .innerPage {
+  padding: 20px;
+  position: relative;
+}
+main .router .router-page .innerPage .defaultPw {
+  padding-top: 23px;
+}
+main .router .router-page .innerPage .not-secure-banner {
+  background: linear-gradient(to right, #f4e185, #1697f4);
+  font-size: 0.9rem;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  left: 0;
+  padding: 7px 20px;
+  border-right: 1px solid #2c393e;
+}
+main .router .router-page .innerPage .not-secure-banner a {
+  color: #161f23;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+main .router .router-page .innerPage h1, main .router .router-page .innerPage .data-table p.center, main .router .router-page .innerPage p.center, main .router .router-page .innerPage p.sametitle {
+  font-size: 1.05rem;
+  font-weight: 400;
+  margin-bottom: 20px;
+  color: rgb(216, 206, 206);
+  display: flex;
+  align-items: center;
+}
+main .router .router-page .innerPage h1:not(:first-of-type), main .router .router-page .innerPage p.center:not(:first-of-type), main .router .router-page .innerPage p.sametitle:not(:first-of-type) {
+  margin-top: 20px;
+}
+main .router .router-page .innerPage h1 button.go-back, main .router .router-page .innerPage p.center button.go-back, main .router .router-page .innerPage p.sametitle button.go-back {
+  border: none;
+  cursor: pointer;
+  padding: 6px 15px;
+  width: -moz-fit-content;
+  width: fit-content;
+  flex-shrink: 0;
+  white-space: nowrap;
+  font-size: 0.89rem;
+  text-decoration: none;
+  color: #18222a;
+  border-radius: 50px;
+  display: inline-flex;
+  margin-right: 10px;
+  background: linear-gradient(to right, #f4e185, #1697f4);
+  font-weight: 500;
+  -moz-column-gap: 5px;
+       column-gap: 5px;
+}
+main .router .router-page .innerPage h1 button.go-back svg, main .router .router-page .innerPage p.center button.go-back svg, main .router .router-page .innerPage p.sametitle button.go-back svg {
+  width: 20px;
+  height: 20px;
+  fill: #18222a;
+}
+main .router .router-page .innerPage h1 span.capit, main .router .router-page .innerPage p.center span.capit, main .router .router-page .innerPage p.sametitle span.capit {
+  text-transform: uppercase;
+  display: inline-flex;
+  margin-left: 5px;
+  color: #f4e185;
+}
+main .router .router-page .innerPage p.sametitle {
+  font-size: 0.95rem;
+}
+main .router .router-page .innerPage p.center {
+  text-align: center;
+  justify-content: center;
+}
+main .router .router-page .innerPage p.smalledCenter {
+  font-size: 1rem;
+  opacity: 0.7;
+}
+main .router .router-page .innerPage p.smalledCenter span {
+  display: inline-flex;
+  margin: 0 5px;
+  color: #f4e185;
+}
+main .router .router-page .innerPage .data-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 32.2580645161%);
+  justify-content: space-between;
+}
+main .router .router-page .innerPage .data-cards .data-card {
+  padding: 20px;
+  border-radius: 10px;
+  background: #18222a;
+  position: relative;
+  text-decoration: none;
+}
+main .router .router-page .innerPage .data-cards .data-card button {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  bottom: 5px;
+  right: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: lightcoral;
+  border: none;
+  border-radius: 5px;
+}
+main .router .router-page .innerPage .data-cards .data-card button svg {
+  fill: white;
+  fill: maroon;
+  width: 70%;
+  height: 70%;
+}
+main .router .router-page .innerPage .data-cards .data-card h1, main .router .router-page .innerPage .data-cards .data-card p.sametitle, main .router .router-page .innerPage .data-cards .data-card p.center {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: rgb(175, 164, 164);
+  margin-bottom: 8px;
+}
+main .router .router-page .innerPage .data-cards .data-card p {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #1697f4;
+}
+main .router .router-page .innerPage .data-cards .data-card p.small-p {
+  font-size: 1rem;
+}
+main .router .router-page .innerPage .data-cards .data-card .icon {
+  width: 60px;
+  height: 60px;
+  top: 50%;
+  position: absolute;
+  transform: translateY(-50%);
+  right: 20px;
+}
+main .router .router-page .innerPage .data-cards .data-card .icon.push {
+  right: 10px;
+}
+main .router .router-page .innerPage .data-cards .data-card .icon svg {
+  width: 100%;
+  height: 100%;
+  fill: #2c393e;
+}
+main .router .router-page .innerPage .data-cards .add-option {
+  display: flex;
+  align-items: center;
+}
+main .router .router-page .innerPage .data-cards .add-option button {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: none;
+  background: #18222a;
+  cursor: pointer;
+  transform: scale(1);
+  transition: 0.5s;
+  box-shadow: 0;
+}
+main .router .router-page .innerPage .data-cards .add-option button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+main .router .router-page .innerPage .data-cards .add-option button svg {
+  fill: rgb(216, 206, 206);
+  width: 50%;
+  height: 50%;
+  flex-shrink: 0;
+  margin: 0;
+}
+main .router .router-page .innerPage .data-table {
+  margin-top: 20px;
+}
+main .router .router-page .innerPage .data-table .titles {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+main .router .router-page .innerPage .data-table .titles h1, main .router .router-page .innerPage .data-table .titles p.center, main .router .router-page .innerPage .data-table .titles p.sametitle {
+  margin-bottom: unset !important;
+  margin-top: unset;
+}
+main .router .router-page .innerPage .data-table .titles .title-actions {
+  display: flex;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+  align-items: center;
+}
+main .router .router-page .innerPage .data-table .titles .title-actions a, main .router .router-page .innerPage .data-table .titles .title-actions button {
+  border-radius: 5px;
+  padding: 6px 15px;
+  background: linear-gradient(to right, #f4e185, #1697f4);
+  font-size: 0.9rem;
+  text-decoration: none;
+  font-weight: 500;
+  color: #2c393e;
+  border: none;
+  cursor: pointer;
+}
+main .router .router-page .innerPage .data-table .titles .title-actions a.svgBtn, main .router .router-page .innerPage .data-table .titles .title-actions button.svgBtn {
+  display: flex;
+  width: -moz-fit-content;
+  width: fit-content;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+  align-items: center;
+}
+main .router .router-page .innerPage .data-table .titles .title-actions a.svgBtn svg, main .router .router-page .innerPage .data-table .titles .title-actions button.svgBtn svg {
+  width: 25px;
+  height: 25px;
+}
+main .router .router-page .innerPage .data-table .titles .title-actions button {
+  font-size: 0.8rem;
+}
+main .router .router-page .innerPage .data-table p.center {
+  text-align: center;
+  justify-content: center;
+}
+main .router .router-page .innerPage .data-table p.center span a {
+  color: #1697f4;
+  text-decoration: none;
+  font-size: 0.99rem;
+}
+main .router .router-page .innerPage .data-table table {
+  width: 100%;
+  padding: 10px;
+  background: #18222a;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+main .router .router-page .innerPage .data-table table thead tr th {
+  padding: 5px 0;
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-align: center;
+  color: rgb(219, 208, 208);
+  border-bottom: 1px solid rgb(219, 208, 208);
+}
+main .router .router-page .innerPage .data-table table tbody tr:nth-of-type(odd) {
+  background: #2c393e;
+}
+main .router .router-page .innerPage .data-table table tbody tr td {
+  padding: 10px 2px;
+  font-size: 0.89rem;
+  color: rgb(219, 208, 208);
+  text-align: center;
+}
+main .router .router-page .innerPage .data-table table tbody tr td.upper {
+  text-transform: uppercase;
+}
+main .router .router-page .innerPage .data-table table tbody tr td a, main .router .router-page .innerPage .data-table table tbody tr td button {
+  border: none;
+  border-radius: 5px;
+  padding: 5px 15px;
+  background: #f4e185;
+  text-decoration: none;
+  color: #1697f4;
+  font-weight: 500;
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  background: rgb(219, 208, 208);
+  color: #18222a;
+}
+main .router .router-page .innerPage .data-table table tbody tr td a[disabled=true], main .router .router-page .innerPage .data-table table tbody tr td button[disabled=true] {
+  opacity: 0.4;
+  pointer-events: none;
+  cursor: pointer;
+}
+main .router .router-page .innerPage .data-table table tbody tr td a.del, main .router .router-page .innerPage .data-table table tbody tr td button.del {
+  background: rgb(192, 63, 49);
+  color: white;
+  position: relative;
+}
+main .router .router-page .innerPage .data-table table tbody tr td a.del:hover .delete-prompt, main .router .router-page .innerPage .data-table table tbody tr td button.del:hover .delete-prompt {
+  opacity: 1;
+  pointer-events: all;
+  cursor: default;
+  transform: scale(1);
+}
+main .router .router-page .innerPage .data-table table tbody tr td a.del .delete-prompt, main .router .router-page .innerPage .data-table table tbody tr td button.del .delete-prompt {
+  position: absolute;
+  width: 250px;
+  bottom: 100%;
+  right: 0;
+  opacity: 0;
+  pointer-events: none;
+  padding-bottom: 5px;
+  transform: scale(0.6);
+  transform-origin: bottom right;
+  transition: 0.5s;
+}
+main .router .router-page .innerPage .data-table table tbody tr td a.del .delete-prompt .delete-prompt-text, main .router .router-page .innerPage .data-table table tbody tr td button.del .delete-prompt .delete-prompt-text {
+  background: #d0342c;
+  padding: 15px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 7px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.199);
+}
+main .router .router-page .innerPage .data-table table tbody tr td a.del .delete-prompt .delete-prompt-text span, main .router .router-page .innerPage .data-table table tbody tr td button.del .delete-prompt .delete-prompt-text span {
+  font-size: 0.85rem;
+}
+main .router .router-page .innerPage .data-table table tbody tr td a.del .delete-prompt button, main .router .router-page .innerPage .data-table table tbody tr td button.del .delete-prompt button {
+  width: -moz-fit-content;
+  width: fit-content;
+  background: #18222a;
+  color: rgb(216, 206, 206);
+}
+main .router .router-page .innerPage .data-links {
+  display: flex;
+  flex-wrap: wrap;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+  row-gap: 10px;
+}
+main .router .router-page .innerPage .data-links button, main .router .router-page .innerPage .data-links span {
+  padding: 7px 13px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  background: #18222a;
+  color: rgb(216, 206, 206);
+  border: none;
+  border-radius: 5px;
+}
+main .router .router-page .innerPage .data-links button {
+  background: linear-gradient(to right, #f4e185, #1697f4);
+  color: #18222a;
+  font-weight: 600;
+}
+main .router .popUp {
+  position: fixed;
+  width: 75%;
+  height: calc(100% - 64px);
+  background: rgba(0, 0, 0, 0.486);
+  top: 64px;
+  left: 25%;
+  z-index: 200;
+  transition: 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+}
+main .router .popUp.active {
+  opacity: 1;
+  pointer-events: all;
+}
+main .router .popUp .popCloser {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  cursor: pointer;
+}
+main .router .popUp .popCloser span {
+  display: flex;
+  height: 3px;
+  width: 28px;
+  background: #1697f4;
+  transform: rotate(0);
+  top: 0;
+  left: 0;
+  position: relative;
+  transition: 0.5s;
+}
+main .router .popUp .popCloser span:last-of-type {
+  transform: rotate(45deg);
+  top: -5px;
+}
+main .router .popUp .popCloser span:first-of-type {
+  transform: rotate(-45deg);
+  top: -1px;
+  background: #f4e185;
+}
+main .router .popUp .popUp-card {
+  width: 70%;
+  background: #18222a;
+  padding: 20px;
+  box-shadow: 0 0 10px -5px #2c393e;
+  border-radius: 20px;
+  border: 1px solid #2c393e;
+}
+main .router .popUp .popUp-card.allow-read-write form.popForm .pop-part-form.center {
+  display: flex !important;
+  justify-content: center;
+}
+main .router .popUp .popUp-card.allow-read-write form.popForm .pop-part-form.center .crd label {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+main .router .popUp .popUp-card.allow-read-write form.popForm .pop-part-form.center .crd .crd-input {
+  width: 100%;
+}
+main .router .popUp .popUp-card.allow-read-write form.popForm .pop-part-form .crd .crd-input {
+  border: 1px solid rgba(240, 240, 240, 0.2666666667);
+  border-radius: 5px;
+}
+main .router .popUp .popUp-card.allow-read-write form.popForm .pop-part-form .crd .crd-input .icon {
+  opacity: 1;
+}
+main .router .popUp .popUp-card.allow-read-write form.popForm .pop-part-form .crd input {
+  padding: 8px 15px 8px 35px;
+}
+main .router .popUp .popUp-card button {
+  padding: 8px 15px;
+  display: flex;
+  width: 100%;
+  margin: 15px auto 0;
+  justify-content: center;
+  border-radius: 5px;
+  border: none;
+  background: linear-gradient(to right, #f4e185, #1697f4);
+  position: relative;
+  cursor: pointer;
+  font-weight: 500;
+  z-index: 1;
+  bottom: 0;
+  transition: 0.5s;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+main .router .popUp .popUp-card button.danger {
+  background: rgb(216, 87, 87) !important;
+  border: 2px solid maroon !important;
+  margin: 15px auto 0;
+}
+main .router .popUp .popUp-card button.loading {
+  opacity: 0.5;
+  transform: scale(0.95);
+  pointer-events: none;
+}
+main .router .popUp .popUp-card button:hover {
+  bottom: 3px;
+}
+main .router .popUp .popUp-card h1.popTitle, main .router .popUp .popUp-card .router-page .innerPage p.popTitle.sametitle, main .router .router-page .innerPage .popUp .popUp-card p.popTitle.sametitle, main .router .popUp .popUp-card .router-page .innerPage p.popTitle.center, main .router .router-page .innerPage .popUp .popUp-card p.popTitle.center {
+  text-align: center;
+  justify-content: center;
+}
+main .router .popUp .popUp-card label {
+  color: rgb(216, 206, 206);
+  font-size: 0.9rem;
+}
+main .router .popUp .popUp-card form.popForm .pop-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+main .router .popUp .popUp-card form.popForm .pop-image .pop-image-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid rgb(216, 206, 206);
+  margin-bottom: 5px;
+}
+main .router .popUp .popUp-card form.popForm .pop-image .pop-image-img img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+}
+main .router .popUp .popUp-card form.popForm .pop-part-form {
+  display: grid;
+  grid-template-columns: repeat(2, 49%);
+  justify-content: space-between;
+  row-gap: 10px;
+}
+main .router .popUp .popUp-card form.popForm .pop-part-form .crd {
+  transition: 0.5s;
+  border: 1px solid transparent;
+}
+main .router .popUp .popUp-card form.popForm .pop-part-form .crd .crd-input {
+  position: relative;
+  border: none;
+  overflow: hidden;
+}
+main .router .popUp .popUp-card form.popForm .pop-part-form .crd .crd-input .icon {
+  width: 19px;
+  height: 19px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 7px;
+  opacity: 0;
+  transition: 0.5s;
+  pointer-events: none;
+}
+main .router .popUp .popUp-card form.popForm .pop-part-form .crd .crd-input .icon svg {
+  width: 100%;
+  height: 100%;
+  fill: rgb(219, 208, 208);
+}
+main .router .popUp .popUp-card form.popForm .pop-part-form .crd label {
+  color: rgb(156, 156, 156);
+  font-size: 0.85rem;
+  margin-bottom: 5px;
+}
+main .router .popUp .popUp-card form.popForm .pop-part-form .crd input, main .router .popUp .popUp-card form.popForm .pop-part-form .crd select {
+  padding: 8px 15px 8px 0px;
+  width: 100%;
+  outline: none;
+  border: none;
+  background: none;
+  color: white;
+}
+main .router .popUp .popUp-card form.popForm .pop-part-form .crd select {
+  pointer-events: all !important;
+}
+main .router .popUp .popUp-card form.popForm .pop-part-form .crd select option {
+  background: #161f23;
+  text-transform: capitalize;
+}
+main .router .popUp .popUp-card p.centerP {
+  color: rgb(216, 206, 206);
+  justify-content: center;
+  text-align: center;
+}
+main.hide-nav {
+  grid-template-columns: 90px calc(100vw - 95px);
+}
+main.hide-nav .router::before {
+  width: calc(100vw - 95px);
+  left: 90px;
+}
+main.hide-nav aside {
+  width: 90px;
+  padding: 15px 0;
+  background: #18222a;
+  transition: 0.5s;
+}
+main.hide-nav aside .logo img {
+  width: 50px;
+  height: 50px;
+}
+main.hide-nav aside .logo span {
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.1s !important;
+  overflow: hidden;
+}
+main.hide-nav aside a, main.hide-nav aside .logOut {
+  padding: 13px 13px;
+  justify-content: center;
+  border-right: 4px solid transparent;
+}
+main.hide-nav aside a span, main.hide-nav aside .logOut span {
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+}
+main.hide-nav aside a:not(.router-link-active):hover, main.hide-nav aside .logOut:not(.router-link-active):hover {
+  background: #161f23;
+}
+main.hide-nav aside a.router-link-active, main.hide-nav aside .logOut.router-link-active {
+  color: white;
+  background: #2c393e;
+  border-right: 4px solid #1697f4;
+}
+main.hide-nav aside a.router-link-active svg, main.hide-nav aside .logOut.router-link-active svg {
+  fill: white;
+}
+main.hide-nav aside a svg, main.hide-nav aside .logOut svg {
+  left: 5px;
+}
+main.hide-nav .topNav .nav-l .sidenav span:last-of-type {
+  transform: rotate(0);
+  top: 0;
+}
+main.hide-nav .topNav .nav-l .sidenav span:first-of-type {
+  transform: rotate(0);
+  top: 0;
+  background: #1697f4;
+}
+main.hide-nav .topNav .nav-l .sidenav span:nth-of-type(2) {
+  opacity: 1;
+}
+main.hide-nav .data-charts-split {
+  transition: 0.5s;
+  grid-template-columns: 600px calc(100% - 650px);
+}
+main.hide-nav .popUp {
+  width: calc(100% - 95px);
+  top: 64px;
+  left: 90px;
+}
+
+.vue-notification {
+  font-size: 14px !important;
+}/*# sourceMappingURL=style.css.map */

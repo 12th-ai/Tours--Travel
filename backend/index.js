@@ -44,7 +44,7 @@ app.use('/api/tour-guides', tourGuideRoutes);
 
 
 const tourPackageRoutes = require('./Router/tourPackageRoutes');
-app.use('/api/tour-guides', tourPackageRoutes);
+app.use('/api/tour-packages', tourPackageRoutes);
 app.use('/api', summaryRoute);
 
 // Error handling middleware
@@ -60,7 +60,7 @@ const PORT = process.env.PORT || 3000;
 
 
 
-sequelize.sync()
+sequelize.sync({alter:true})
     .then(() => console.log('Database synced'))
     .catch((error) => console.error('Database sync error:', error));
 

@@ -31,6 +31,7 @@ import ForgotPassword from "./Component/Dashboard/Auth/Forgotpassword";
 import ResetPassword from "./Component/Dashboard/Auth/Resetpassword";
 import TableSummary from "./Component/Dashboard/WIdget/TableSummary";
 // import { AuthProvider } from './Context/AuthContext';
+import ViewPackageDetails from "./Component/Dashboard/Tour_package/ViewSinglePackage";
 
 
 const router = createBrowserRouter([
@@ -163,6 +164,10 @@ const router = createBrowserRouter([
               {
                 path: "update:id",
                 element: <UpadatePackage />,
+              },
+              {
+                path:'viewdetail/:id',
+                element:<ViewPackageDetails />,
               },
             ],
           },

@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.post('/tour-packages', upload.fields([
+router.post('/', upload.fields([
     { name: 'image1', maxCount: 1 },
     { name: 'image2', maxCount: 1 },
     { name: 'image3', maxCount: 1 }
@@ -28,10 +28,10 @@ router.put('/tour-packages/:id', upload.fields([
     { name: 'image3', maxCount: 1 }
 ]), TourPackageController.updateTourPackage);
 
-router.get('/tour-packages', TourPackageController.getTourPackages);
+router.get('/', TourPackageController.getTourPackages);
 
-router.get('/tour-packages/:id', TourPackageController.getTourPackageById);
+router.get('/:id', TourPackageController.getTourPackageById);
 
-router.delete('/tour-packages/:id', TourPackageController.deleteTourPackage);
+router.delete('/:id', TourPackageController.deleteTourPackage);
 
 module.exports = router;
