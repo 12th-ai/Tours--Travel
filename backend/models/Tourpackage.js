@@ -11,7 +11,7 @@ const TourPackage = sequelize.define('TourPackage', {
         allowNull: false,
     },
     travelPlan: {
-        type: DataTypes.JSON, // Assuming travel plan includes dates, locations, etc.
+        type: DataTypes.DATE, // Assuming travel plan includes dates, locations, etc.
         allowNull: false,
     },
     pricing: {

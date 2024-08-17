@@ -5,6 +5,9 @@ import axios from 'axios';
 import Topnav from '../../Component/Dashboard/WIdget/Topnav';
 import Sidebar from '../../Component/Dashboard/WIdget/Sidebar';
 import { UserProvider, useUser } from '../../Context/AuthContext';
+import { userService } from '../../Services/authService';
+// import Footer from '../../Component/Footer';
+
 
 const DashLayout = ({ children }) => {
   const { user, setUser } = useUser(); // Access the user context
@@ -12,27 +15,28 @@ const DashLayout = ({ children }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchUserData = async () => {
+    const getUserData = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/auth/profile', {
-          withCredentials: true, // Include credentials (like cookies) if needed
-        });
-
-        if (response.data.status === 'success') {
-          setUser(response.data.user); // Set user data if status is success
+        const data = await userService.fetchProfileData();
+        // console.log("Fetched Data: ", data);
+        if (data.status === 'success') {
+          setUser(data.user);
+          console.log("User Set: ", data.user);
         } else {
-          navigate('/dashboard', { replace: true }); // Redirect if status is not success
+          console.log("Failed Fetching User");
+          navigate('/dashboard', { replace: true });
         }
       } catch (error) {
-        console.error('Error fetching user data:', error);
-        navigate('/dashboard', { replace: true }); // Redirect on error
-      } finally {
-        setLoading(false); // Set loading to false after fetching
+        console.error("Error Fetching User: ", error);
+        navigate('/dashboard', { replace: true });
       }
     };
+    
+    
 
-    fetchUserData();
+    getUserData();
   }, [navigate, setUser]);
+
 
 
 
@@ -51,6 +55,7 @@ const DashLayout = ({ children }) => {
             <div className="innerPage">
               <Outlet />
             </div>
+            {/* <Footer /> */}
           </div>
         </div>
       </main>

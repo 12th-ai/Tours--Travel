@@ -211,7 +211,8 @@ body {
           margin-top: 20px;
         }
         input,
-        select {
+        select,
+        textarea{
           padding: 8px 15px 8px 35px;
           width: 100%;
           outline: none;
@@ -1080,9 +1081,7 @@ main {
 }
 
 .addpackage {
-  // border:2px solid red;
-  // display: flex;
-  // justify-content: space-between;
+
   width: 100%;
   h3 {
     color: white;
@@ -1117,15 +1116,14 @@ main {
       margin: 30px;
       height: 100%;
 
-      form {
-        padding-bottom: 20px;
+  
         textarea{
           background-color: transparent;
           border: none;
           outline: none;
           color: white;
           padding: 20px;
-        }
+        
 
         input[type="file"] {
           background-color: transparent;
@@ -1138,100 +1136,142 @@ main {
   }
 }
 
+.setting{
+  // border:2px solid red;
+  width:100%;
+  background: $used_color_light;
+  background-color: $used_color_light;
+border-radius: 10px;
 
-
-
-
-
-
-
-.custom-quill .ql-container {
-  height: 300px; /* Increase the editor height */
+  .form-page{
+    width: 100%;
+    background-color: $used_color_light;
+  }
 }
 
 
-.crd{
-  .custom-quill{
-    // background-color: #0056b3;
-    .ql-toolbar{
-      // border:2px solid red;
-    
-      // background: red;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr ;
-      // height: 200px;
 
-      button{
-        background-color: #1697f4;
-        margin: 10px;
-      }
-      
+
+
+.package-details-container{
+  // border:2px solid red;
+
+  .bottom-section{
+    .content-section{
+      // border: 2px solid green;
+      padding: 20px;
+      line-height: 2;
+      font-size: 15px;
+      text-align: justify;
+      // overflow: scroll;
+     
+
     }
+    .info-table{
+    // border:2px solid red;
+    line-height: 2;
 
-    
-    .ql-snow{
-      // border: 2px solid red;
-      // display: grid;
-      // grid-template-columns: 1fr 1fr 1fr;
-      text-align: center;
-      .ql-picker-options {
-        background-color: transparent;
-        // border: 2px solid red;
-        width: auto;
-        border-radius: 4px; /* Adds rounded corners */
-        padding: 5px; /* Adds padding */
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
-        // margin-left:-40%;
-        position: absolute;
-        left:-150px;
-      }
+    td{
       
-      .ql-picker-options .ql-picker-item {
-        padding: 5px 10px;
+      a{
+        padding: 4px 13px;
+        display: flex;
+        width: 150px;
+        margin: 15px auto 0;
+        justify-content: center;
+        border-radius: 5px;
+        border: none;
+        background: burlywood;
+        margin-left: 10px;
+        font-size: 14px;
+        // display: flex;/
+        // position: relative;
         cursor: pointer;
+        text-decoration: none;
+        color: whitesmoke;
+        font-weight: 500;
+        z-index: 1;
+        bottom: 0;
+        transition: 0.5s;
+        // width: fit-content;
+        #delete{
+          // color: crimson;
+          background-color: crimson;
+        }
       }
-      
-      .ql-picker-options .ql-picker-item:hover {
-        background-color: rgba(255, 0, 0, 0.1); /* Adds hover effect */
-      }
-      
-      .ql-picker-options .ql-active {
-        background-color: rgba(255, 0, 0, 0.2); /* Adds active state background */
-      }
-      
+    .del{
+      background-color: crimson;
+      padding: 8px 13px;
+      border: none;
+      display: flex;
+      width: 150px;
+      margin: 15px auto 0;
+      justify-content: center;
+      border-radius: 5px;
+      text-decoration: none;
+      color: whitesmoke;
+      font-weight: 500;
+      z-index: 1;
+      bottom: 0;
+      transition: 0.5s;
+    }
+    }
 
 
-      .ql-editor{
-      background-color:transparent;
-      color:white;
-      // background-color: red;
-      overflow-x:hidden;
-      width:100%;
-      }
 
-      span{
-        // border:2px solid green;
-        width:60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 10px;
+    th{
+      color: #f4e185;
+      font-size: 18px;
+      text-transform: capitalize;
+      text-align: justify;
+      padding-left: 10px;
+      padding-right: 20px;
+    }
+    td{
+      color: #a5ddf7;
+      text-align: justify;
+      margin-left: 20px;
+      text-transform: capitalize;
+    }
+    }
 
-  .ql-size{
-    // margin-left: 80px;
-    background-color: transparent;
-  .ql-picker-label{
-    // background-color: #1697f4;
-    margin-left:40px;
-    display: none;
   }
-}
 
+  .description-section{
+    // border: 2px solid green;
+    display: block;
+    width: 35%;
+    margin: 20px;
+    .small-image{
+      width: 90%;
+      height:50%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+  }
+
+
+
+  .top-section{
+    // border: 2px solid green;
+    height: 350px;
+    display: flex;
+    justify-content: space-between;
+    // align-items: center;
+
+    .image-section{
+      // border: 2px solid blue;
+      margin: 20px;
+      border-radius: 10px;
+      width:65%;
+      height: 90%;
+      object-fit: cover;
+
+      img{
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
       }
     }
   }
-  
-}
-.ql-snow .ql-picker.ql-size .ql-picker-label[data-value=small]::before, .ql-snow .ql-picker.ql-size .ql-picker-item[data-value=small]::before{
-  color:red;
 }

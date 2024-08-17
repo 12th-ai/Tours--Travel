@@ -2,6 +2,7 @@ import React from 'react'
 import { Outlet } from 'react-router-dom'
 import ClientNav from '../Component/ClientNav'
 import '../assets/Style/client_style/index.css'
+import Footer from '../Component/Footer'
 
 function ClientLayout() {
   return (
@@ -45,7 +46,7 @@ function ClientLayout() {
    </div>
 <ClientNav />
         <Outlet /> 
-       
+       <Footer />
     </div>
   )
 }

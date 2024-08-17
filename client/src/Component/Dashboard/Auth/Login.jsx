@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { userService } from "../../../Services/authService"; // Adjust the path as needed
+
 
 const Login = () => {
 
@@ -12,40 +14,35 @@ const Login = () => {
   });
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
 
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
-
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/api/auth/login", credentials,{
-        withCredentials: true, // Include credentials with the request
-        headers: {
-          'Content-Type': 'application/json'
-        }
+      const responseData = await userService.login(credentials);
+
+      toast.success(responseData.message, {
+          autoClose: 1300 // Notification will be displayed for 1.3 seconds
       });
 
-    
-        toast.success(response.data.message, {
-            autoClose: 2500 // Notification will be displayed for 2 seconds
-        });
-        setTimeout(() => {
-            navigate('/dashboard/protected'); // Redirect to login page after 2 seconds
-        }, 3200);
+      setTimeout(() => {
+          navigate('/dashboard/protected'); // Redirect to dashboard after 3.2 seconds
+          setLoading(true);
+        }, 3000);
 
     } catch (error) {
-      if (error.response && error.response.data && error.response.data.message) {
-        toast.error(error.response.data.message, { autoClose: 10000 });
-      } else {
-        toast.error('incorrect credentialss', { autoClose: 10000 });
-      }
+      toast.error(error.message, { autoClose:2000 });
       console.error('Login failed:', error);
-      // Optionally handle the error here, e.g., display a message to the user
+      setLoading(true);
     }
-
+    finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -108,7 +105,9 @@ const Login = () => {
               </p>
             </div>
 
-            <button>login</button>
+            <button type="submit" disabled={loading}>
+            {loading ? "Sending..." : "Sign in "}
+          </button>
             <div className="forgot">
             <Link to='forgot'>forgot password</Link>
             </div>

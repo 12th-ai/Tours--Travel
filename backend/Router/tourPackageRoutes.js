@@ -22,13 +22,14 @@ router.post('/', upload.fields([
     { name: 'image3', maxCount: 1 }
 ]), TourPackageController.createTourPackage);
 
-router.put('/tour-packages/:id', upload.fields([
+router.put('/:id', upload.fields([
     { name: 'image1', maxCount: 1 },
     { name: 'image2', maxCount: 1 },
     { name: 'image3', maxCount: 1 }
 ]), TourPackageController.updateTourPackage);
 
 router.get('/', TourPackageController.getTourPackages);
+router.get('/packagecount',TourPackageController.getPackagecount);
 
 router.get('/:id', TourPackageController.getTourPackageById);
 

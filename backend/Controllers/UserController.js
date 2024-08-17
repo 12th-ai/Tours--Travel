@@ -1,12 +1,12 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
+const { Op } = require('sequelize'); // Import Sequelize operators
 
 
-
+// Registration function
 const registerUser = async (req, res) => {
     const { username, email, phone, password, role } = req.body;
 
@@ -26,6 +26,7 @@ const registerUser = async (req, res) => {
     }
 };
 
+// Login function
 const loginUser = async (req, res) => {
     const { username, password } = req.body;
 
@@ -53,40 +54,41 @@ const loginUser = async (req, res) => {
     }
 };
 
+// Get user profile function
 const getUserProfile = async (req, res) => {
     const { id } = req.user;
 
     try {
         const user = await User.findByPk(id, {
-            attributes: ['username', 'phone', 'role'],
+            attributes: ['username', 'phone','role','email','password','id'],
         });
 
-        if (user) {
-            // If user is found, return the user data along with a success status
-            return res.status(200).json({
-                status: 'success',
-                user: {
-                    username: user.username,
-                    phone: user.phone,
-                    role: user.role,
-                },
-            });
-        } else {
-            // If user is not found, return a different status
-            return res.status(404).json({
-                status: 'error',
-                message: 'User not found',
-            });
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
         }
-        res.json(user);
+
+        res.status(200).json({
+            status: 'success',
+            user: {
+              
+                username: user.username,
+                phone: user.phone,
+              
+                email:user.email,
+                password:user.password,
+                role:user.role,
+                id: user.id
+            },
+        });
     } catch (error) {
         res.status(500).json({ error: 'Internal server error' });
     }
 };
 
+// Update user function
 const updateUser = async (req, res) => {
-    const { id } = req.user;
-    const { email, phone, role } = req.body;
+    const { id } = req.params; // Get the user ID from the request parameters
+    const { email, phone,password,username } = req.body;
 
     try {
         const user = await User.findByPk(id);
@@ -94,215 +96,192 @@ const updateUser = async (req, res) => {
         if (!user) {
             return res.status(404).json({ error: 'User not found' });
         }
-
+         user.username = username || user.username
         user.email = email || user.email;
         user.phone = phone || user.phone;
-        user.role = role || user.role;
+        
 
         await user.save();
 
         res.json({ message: 'User updated successfully', user });
     } catch (error) {
+        console.error("Error updating user:", error);
         res.status(500).json({ error: 'Internal server error' });
     }
 };
 
 const deleteUser = async (req, res) => {
-    const { id } = req.user;
-
     try {
-        const user = await User.findByPk(id);
+        const userId = req.params.id; // Get the user ID from the request parameters
 
-        if (!user) {
-            return res.status(404).json({ error: 'User not found' });
+        // Check if user ID is valid
+        if (!userId) {
+            return res.status(400).json({ success: false, message: "User ID is required" });
         }
 
-        await user.destroy();
+        // Attempt to delete the user
+        const result = await User.destroy({
+            where: {
+                id: userId, // This is the where clause
+            },
+        });
 
-        res.json({ message: 'User deleted successfully' });
+        // Check if the user was actually deleted
+        if (result === 0) {
+            return res.status(404).json({ success: false, message: "User not found" });
+        }
+
+        // Respond with success if the user was deleted
+        res.status(200).json({ success: true, message: "User deleted successfully" });
     } catch (error) {
-        res.status(500).json({ error: 'Internal server error' });
+        console.error("Error deleting user:", error);
+        res.status(500).json({ success: false, message: "An error occurred while deleting the user" });
     }
 };
 
-// authController.js
 
+  
+
+// Logout function
 const logout = (req, res) => {
-    res.clearCookie('token'); // Clear the authentication cookie
+    res.clearCookie('token');
     res.status(200).json({ status: 'success', message: 'Logged out successfully' });
-  };
+};
 
-
-  const getSummary = async (req, res) => {
+// Get summary function
+const getUsercount = async (req, res) => {
     try {
-      const totalUsers = await User.count();
-      // Add more stats here if needed
-  
-      res.status(200).json({
-        success: true,
-        data: {
-          totalUsers,
-          // Add other stats here
-        },
-      });
+        const totalUsers = await User.count();
+        res.status(200).json({
+            success: true,
+            data: {
+                totalUsers,
+            },
+        });
     } catch (error) {
-      res.status(500).json({ success: false, message: 'Server Error' });
+        res.status(500).json({ success: false, message: 'Server error' });
     }
-  };
+};
 
 
- 
-// const transporter = nodemailer.createTransport({
-//   service: 'gmail',
-//   auth: {
-//     user: process.env.EMAIL,
-//     pass: process.env.PASSWORD
-//   }
-// });
+const getAllUsers = async (req, res) => {
+    try {
+     
+        const users = await User.findAll({
+            where: {
+                role: 1, // Fetch only users with role = 
+            }
+        });
 
+        res.status(200).json({
+            success: true,
+            data: users, // Return the list of users
+        });
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Server error' });
+    }
+};
+
+
+
+// Send OTP for password reset function
 const forgotPassword = async (req, res) => {
+    const { email } = req.body;
+
     try {
-      const { email } = req.body;
-  
-      const user = await User.findOne({ where: { email } });
-      if (!user) {
-        return res.status(404).json({ message: 'User not found' });
-      }
-  
-      const otp = crypto.randomBytes(3).toString('hex');
-      const otpExpires = Date.now() + 3600000; // 1 hour
-  
-      await user.update({ otp, otpExpires });
-  
-      const mailOptions = {
-        from: process.env.EMAIL,
-        to: user.email,
-        subject: 'Password Reset OTP',
-        text: `Your OTP code is ${otp}`
-      };
-  
-      await transporter.sendMail(mailOptions);
-  
-      res.status(200).json({ message: 'OTP sent to email' });
+        const user = await User.findOne({ where: { email } });
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        const otp = crypto.randomBytes(3).toString('hex');
+        const otpExpires = Date.now() + 3600000; // 1 hour
+
+        await user.update({ otp, otpExpires });
+
+        const mailOptions = {
+            from: process.env.EMAIL,
+            to: user.email,
+            subject: 'Password Reset OTP',
+            text: `Your OTP code is ${otp}`,
+        };
+
+        await transporter.sendMail(mailOptions);
+
+        res.status(200).json({ message: 'OTP sent to email' });
     } catch (error) {
-      res.status(500).json({ message: 'Something went wrong', error });
+        res.status(500).json({ message: 'Something went wrong', error });
     }
-  };
-  
-  // const resetPassword = async (req, res) => {
-  //   try {
-  //     const { email, otp, newPassword } = req.body;
-  
-  //     const user = await User.findOne({ where: { email, otp } });
-  
-  //     if (!user || user.otpExpires < Date.now()) {
-  //       return res.status(400).json({ message: 'Invalid OTP or OTP expired' });
-  //     }
-  
-  //     await user.update({
-  //       password: await bcrypt.hash(newPassword, 10),
-  //       otp: null,
-  //       otpExpires: null
-  //     });
-  
-  //     res.status(200).json({ message: 'Password reset successfully' });
-  //   } catch (error) {
-  //     res.status(500).json({ message: 'Something went wrong', error });
-  //   }
-  // };
-
-  // const nodemailer = require('nodemailer');
-
-const transporter = nodemailer.createTransport({
-  service: 'mihigofololive@gmail',
-  auth: {
-    user: 'mihigofololive@gmail.com',
-    pass: 'ecwuvkzyhxdhepwt', // Directly place the app-specific password here
-  },
-});
-
-const mailOptions = {
-  from: 'mihigofololive@gmail.com',
-  to: 'recipient@example.com',
-  subject: 'Test Email',
-  text: 'This is a test email',
 };
 
-transporter.sendMail(mailOptions, (error, info) => {
-  if (error) {
-    return console.log(error);
-  }
-  console.log('Email sent: ' + info.response);
-});
-
+// Verify OTP function
 const verifyOtp = async (req, res) => {
-  const { email, otp } = req.body;
+    const { email, otp } = req.body;
 
-  try {
-    // Find the user by email
-    const user = await User.findOne({ where: { email } });
+    try {
+        const user = await User.findOne({ where: { email } });
 
-    if (!user) {
-      return res.status(404).json({ success: false, message: 'User not found' });
+        if (!user) {
+            return res.status(404).json({ success: false, message: 'User not found' });
+        }
+
+        // Debugging logs
+        console.log('Stored OTP:', user.otp);
+        console.log('Provided OTP:', otp);
+        console.log('OTP Expiration:', user.otpExpires);
+        console.log('Current Time:', Date.now());
+
+        // Check if OTP matches and is not expired
+        if (String(user.otp) === String(otp) && user.otpExpires > Date.now()) {
+            return res.status(200).json({ success: true, message: 'OTP verified' });
+        } else {
+            return res.status(400).json({ success: false, message: 'Invalid or expired OTP' });
+        }
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Server error', error });
     }
-
-    // Log the details for debugging
-    console.log('Stored OTP:', user.otp);
-    console.log('Provided OTP:', otp);
-    console.log('OTP Expiration:', user.otpExpires);
-    console.log('Current Time:', Date.now());
-
-
-
-    // Check if OTP matches and is not expired
-    if (String(user.otp) === String(otp)) {
-      return res.status(200).json({ success: true, message: 'OTP verified' });
-    } else {
-      return res.status(400).json({ success: false, message: 'Invalid or expired OTP' });
-    }
-  } catch (error) {
-    return res.status(500).json({ success: false, message: 'Server error', error });
-  }
 };
 
-
-// Controller to reset password
+// Reset password function
 const resetPassword = async (req, res) => {
-  const { email, otp, newPassword } = req.body;
+    const { email, otp, newPassword } = req.body;
 
-  try {
-    // Find the user by email
-    const user = await User.findOne({ where: { email } });
+    try {
+        const user = await User.findOne({ where: { email } });
 
-    if (!user) {
-      return res.status(404).json({ success: false, message: 'User not found' });
+        if (!user) {
+            return res.status(404).json({ success: false, message: 'User not found' });
+        }
+
+        if (user.otp === otp && user.otpExpires > Date.now()) {
+            const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+            user.password = hashedPassword;
+            user.otp = null; // Clear the OTP
+            user.otpExpires = null; // Clear the OTP expiration
+
+            await user.save();
+
+            return res.status(200).json({ success: true, message: 'Password reset successful' });
+        } else {
+            return res.status(400).json({ success: false, message: 'Invalid or expired OTP' });
+        }
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Server error', error });
     }
-
-    // Verify the OTP again as an extra precaution
-    if (user.otp === otp) {
-      // Hash the new password
-      const hashedPassword = await bcrypt.hash(newPassword, 10);
-
-      // Update the user's password and clear the OTP
-      user.password = hashedPassword;
-      user.otp = null; // Clear the OTP
-      user.otpExpiration = null; // Clear the OTP expiration
-      await user.save();
-
-      return res.status(200).json({ success: true, message: 'Password reset successful' });
-    } else {
-      return res.status(400).json({ success: false, message: 'Invalid or expired OTP' });
-    }
-  } catch (error) {
-    return res.status(500).json({ success: false, message: 'Server error', error });
-  }
 };
 
-module.exports = { verifyOtp, resetPassword };
+// Nodemailer transporter configuration
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL,
+        pass: process.env.PASSWORD, // App-specific password
+    },
+});
 
-
-  
-  
+// Exporting the controller functions
 module.exports = {
     registerUser,
     loginUser,
@@ -310,11 +289,10 @@ module.exports = {
     updateUser,
     deleteUser,
     logout,
-    getSummary,
-    verifyOtp,
+    getUsercount,
     forgotPassword,
-    resetPassword
- 
-    
+    verifyOtp,
+    resetPassword,
+   getAllUsers
 
 };

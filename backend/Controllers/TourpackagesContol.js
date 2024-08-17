@@ -89,3 +89,19 @@ exports.deleteTourPackage = async (req, res) => {
         res.status(500).json({ error: 'Failed to delete tour package.' });
     }
 };
+
+
+exports.getPackagecount = async (req, res) => {
+    try {
+        const totalPackages = await TourPackage.count();
+        res.status(200).json({
+            success: true,
+            data: {
+                totalPackages
+            },
+        });
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Server error' });
+    }
+};
+

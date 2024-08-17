@@ -19,7 +19,7 @@ function ViewPackage() {
   // Fetch tour packages from the API
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/tour-packages/")
+      .get("http://localhost:3000/api/tour-packages")
       .then((response) => {
         setTourPackages(response.data);
         console.log(response.data)
@@ -58,7 +58,7 @@ function ViewPackage() {
 
 
   return (
-    <div>
+    <div className="">
       <h1>View Tour Packages</h1>
 
       <div>
@@ -114,11 +114,15 @@ function ViewPackage() {
                         View Details
                       </Link>
                       &nbsp;
-                      <button
-                        onClick={() => console.log(`Update ${tourPackage.id}`)}
+                     
+                         <Link
+                        exact
+                        to={`update/${tourPackage.id}`}
                       >
-                        Update
-                      </button>
+                        update
+                      </Link>
+                       
+                 
                       &nbsp;
                       <button
                         className="del"

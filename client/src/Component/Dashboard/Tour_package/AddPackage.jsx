@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-// import TextEditor from "../Auth/TextEditor.jsx";
-import TextEditor from "../Auth/TextEditor.jsx";
+
 import {useNavigate} from 'react-router-dom'
 
 const AddPackage = () => {
@@ -14,15 +13,15 @@ const AddPackage = () => {
   const [location, setlocation] = useState("");
   const [images, setImages] = useState([null, null, null]);
 
-
   const handleImageChange = (e, index) => {
     const file = e.target.files[0];
     if (file) {
-      const updatedImages = [...images];
-      updatedImages[index] = file;
-      setImages(updatedImages);
+        const updatedImages = [...images];
+        updatedImages[index - 1] = file;
+        setImages(updatedImages);
     }
-  };
+};
+
 
 
   const navigate = useNavigate();
@@ -36,19 +35,28 @@ const AddPackage = () => {
     formData.append("pricing", pricing);
     images.forEach((image, index) => {
       if (image) {
-        formData.append(`image${index + 1}`, image);
+          formData.append(`image${index + 1}`, image);
       }
-    });
+  });
+  
+    console.log(formData.images);
+
+    formData.forEach((value, key) => {
+      console.log(`${key}: ${value}`);
+  });
+  
 
     try {
       const response = await axios.post("http://localhost:3000/api/tour-packages/", formData,  {
           headers: {
-            "Content-Type": "multipart/form-data",}
+            "Content-Type": "multipart/form-data"
+          }
         })
             
       .then(response => {
         toast.success('tour successfully inserted', {
             autoClose: 2500 // Notification will be displayed for 2 seconds
+            
         });
         setTimeout(() => {
             navigate('/dashboard/protected/package'); // Redirect to login page after 2 seconds
@@ -63,11 +71,12 @@ const AddPackage = () => {
         console.error('Error response status:', error.response.status);
         console.error('Error response headers:', error.response.headers);
       } else {
-        toast.error('username already exist', { autoClose: 10000 });
-        console.error('Error message:', error.message);
+        toast.error(error.message, { autoClose: 10000 });
+        console.log(formData.images)
       }
       console.error('Login failed:', error);
       console.error('Error config:', error.config);
+       console.log(formData.images)
 
     }
   };
@@ -135,7 +144,14 @@ const AddPackage = () => {
 
             <div className="crd">
               <label>Description</label>
-              <TextEditor />
+               <div className="crd-input">
+               <textarea
+               type="text"
+                     value={description}
+                     onChange={(e) => setDescription(e.target.value)}
+               > </textarea>
+               </div>
+            
             
             </div>
 
@@ -187,7 +203,7 @@ const AddPackage = () => {
                 <input
                   type="file"
                   accept="image/*"
-                  onChange={(e) => handleImageChange(e, 2)}
+                  onChange={(e) => handleImageChange(e, 1)}
                   style={styles.fileInput}
                 />
                 <div className="icon">
@@ -203,6 +219,51 @@ const AddPackage = () => {
             </div>
 
 
+            <div className="part">
+              <div className="crd">
+                <label>image</label>
+                <div className="crd-input">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => handleImageChange(e, 2)}
+                    style={styles.fileInput}
+                 
+                  />
+                  <div className="icon">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      xlink="http://www.w3.org/1999/xlink"
+                      viewBox="0 0 48 48"
+                    >
+                      <path d="M24 4C18.494917 4 14 8.494921 14 14C14 19.505079 18.494917 24 24 24C29.505083 24 34 19.505079 34 14C34 8.494921 29.505083 4 24 4 z M 24 7C27.883764 7 31 10.116238 31 14C31 17.883762 27.883764 21 24 21C20.116236 21 17 17.883762 17 14C17 10.116238 20.116236 7 24 7 z M 12.5 28C10.032499 28 8 30.032499 8 32.5L8 33.699219C8 36.640082 9.8647133 39.277974 12.708984 41.091797C15.553256 42.90562 19.444841 44 24 44C28.555159 44 32.446744 42.90562 35.291016 41.091797C38.135287 39.277974 40 36.640082 40 33.699219L40 32.5C40 30.032499 37.967501 28 35.5 28L12.5 28 z M 12.5 31L35.5 31C36.346499 31 37 31.653501 37 32.5L37 33.699219C37 35.364355 35.927463 37.127823 33.677734 38.5625C31.428006 39.997177 28.068841 41 24 41C19.931159 41 16.571994 39.997177 14.322266 38.5625C12.072537 37.127823 11 35.364355 11 33.699219L11 32.5C11 31.653501 11.653501 31 12.5 31 z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div className="crd">
+                <label>image</label>
+                <div className="crd-input">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => handleImageChange(e, 3)}
+               
+                    style={styles.fileInput}
+                  />
+                  <div className="icon">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      xlink="http://www.w3.org/1999/xlink"
+                      viewBox="0 0 48 48"
+                    >
+                      <path d="M24 4C19.599415 4 16 7.599415 16 12L16 16L12.5 16C10.032499 16 8 18.032499 8 20.5L8 39.5C8 41.967501 10.032499 44 12.5 44L35.5 44C37.967501 44 40 41.967501 40 39.5L40 20.5C40 18.032499 37.967501 16 35.5 16L32 16L32 12C32 7.599415 28.400585 4 24 4 z M 24 7C26.779415 7 29 9.220585 29 12L29 16L19 16L19 12C19 9.220585 21.220585 7 24 7 z M 12.5 19L35.5 19C36.346499 19 37 19.653501 37 20.5L37 39.5C37 40.346499 36.346499 41 35.5 41L12.5 41C11.653501 41 11 40.346499 11 39.5L11 20.5C11 19.653501 11.653501 19 12.5 19 z M 17 28 A 2 2 0 0 0 17 32 A 2 2 0 0 0 17 28 z M 24 28 A 2 2 0 0 0 24 32 A 2 2 0 0 0 24 28 z M 31 28 A 2 2 0 0 0 31 32 A 2 2 0 0 0 31 28 z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+</div>
             <button>Add tour package</button>
           </form>
         </div>

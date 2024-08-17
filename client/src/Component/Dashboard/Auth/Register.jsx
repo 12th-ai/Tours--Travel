@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 // import { useAuth } from '../../../Context/AuthContext';
-import { registerUser } from "../..//../Services/authService";
+// import { registerUser } from "../..//../Services/authService";
 import { toast } from "react-toastify";
-import {Link, useNavigate} from 'react-router-dom'
+import { Link, useNavigate } from "react-router-dom";
+import { userService } from "../../../Services/authService"; // Adjust the path as needed
 
 import axios from "axios";
 const Register = () => {
@@ -23,34 +24,28 @@ const Register = () => {
     });
   };
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3000/api/auth/register", formData)
-      
-      .then(response => {
-        toast.success(response.data.message, {
-            autoClose: 2500 // Notification will be displayed for 2 seconds
-        });
-        setTimeout(() => {
-            navigate('/dashboard'); // Redirect to login page after 2 seconds
-        }, 3200);
-    })
-  
+      const result = await userService.createUser(formData); // Now this sends a POST request using Axios
+      toast.success("Account created successfully", {
+        autoClose: 1300,
+      });
+      setLoading(true);
+      setTimeout(() => {
+        navigate("/dashboard");
+        setLoading(true);
+      }, 3000);
     } catch (error) {
-      if (error.response && error.response.data && error.response.data.message) {
-        toast.error(error.response.data.message, { autoClose: 10000 });
-        console.error('Error response data:', error.response.data);
-        console.error('Error response status:', error.response.status);
-        console.error('Error response headers:', error.response.headers);
-      } else {
-        toast.error('username already exist', { autoClose: 10000 });
-        console.error('Error message:', error.message);
-      }
-      console.error('Login failed:', error);
-      console.error('Error config:', error.config);
+      toast.error(error.message, { autoClose: 3000 });
+      console.error("Registration failed:", error.message);
+      setLoading(false);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -100,6 +95,7 @@ const Register = () => {
                   name="password"
                   value={password}
                   onChange={handleChange}
+                  required
                 />
                 <div className="icon">
                   <svg
@@ -123,6 +119,7 @@ const Register = () => {
                 name="email"
                 value={email}
                 onChange={handleChange}
+                required
               />
               <div className="icon">
                 <svg
@@ -145,6 +142,7 @@ const Register = () => {
                   name="phone"
                   value={phone}
                   onChange={handleChange}
+                  required
                 />
                 <div className="icon">
                   <svg
@@ -164,6 +162,7 @@ const Register = () => {
                   name="role"
                   value={role}
                   onChange={handleChange}
+                  required
                 >
                   <option value="" hidden>
                     privillege
@@ -184,11 +183,13 @@ const Register = () => {
             </div>
           </div>
           <span className="redirect">
-          <span>already have account <Link to='/dashboard'>Login</Link></span>
+            <span>
+              already have account <Link to="/dashboard">Login</Link>
+            </span>
           </span>
-  
-          <button>
-           sign up
+
+          <button type="submit" disabled={loading}>
+            {loading ? "Sending..." : "Sign up "}
           </button>
         </form>
       </div>

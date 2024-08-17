@@ -90,18 +90,20 @@ function TableSummary() {
           <thead>
             <tr>
               <th>#</th>
-              <th>Name</th>
+              <th>title</th>
               <th>Price</th>
-              <th>Duration</th>
+              <th>location</th>
+              <th>date</th>
             </tr>
           </thead>
           <tbody>
             {summaryData.tourPackages.map((tourPackage, index) => (
               <tr key={index}>
                 <td>{index + 1}</td>
-                <td>{tourPackage.name}</td>
-                <td>{tourPackage.price}</td>
-                <td>{tourPackage.duration}</td>
+                <td>{tourPackage.title}</td>
+                <td>{tourPackage.pricing}</td>
+                <td>{tourPackage.location}</td>
+                <td>{tourPackage.travelPlan}</td>
               </tr>
             ))}
           </tbody>

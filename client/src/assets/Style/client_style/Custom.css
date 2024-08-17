@@ -46,7 +46,7 @@
      }
      
 
-     .package-details-container {
+     /* .package-details-container {
        padding: 20px;
        display: flex;
        flex-direction: column;
@@ -117,4 +117,4 @@
        border-radius: 8px;
        object-fit: cover;
      }
-     
+      */

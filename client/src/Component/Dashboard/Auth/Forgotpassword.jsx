@@ -10,11 +10,13 @@ const ForgotPassword = () => {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  // console.log('Final email:', email); // Added log
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
+      // console.log('Final email:', email); // Added log
       const response = await axios.post('http://localhost:3000/api/auth/forgot-password', { email }, {
         withCredentials: true, // Include credentials with the request
         headers: {
@@ -29,12 +31,27 @@ const ForgotPassword = () => {
     setTimeout(() => {
         navigate('/dashboard/reset'); // Redirect to login page after 2 seconds
     }, 3200);
- 
-    } catch (error) {
-      setMessage('An error occurred. Please try again.');
+    console.log('Final email:', email); // Added log
+    }catch (error) {
+      if (error.response) {
+        // The server responded with a status code that falls out of the range of 2xx
+        const { status } = error.response;
+        if (status === 404) {
+          toast.error('Email not found. Please check and try again.');
+        } else {
+          toast.error('An error occurred. Please try again.');
+        }
+      } else if (error.request) {
+        // The request was made but no response was received
+        toast.error('No response from the server. Please try again later.');
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        toast.error('Error in setting up the request. Please try again.');
+      }
       console.error(error);
     } finally {
       setLoading(false);
+      console.log('Final email:', email); // Log the email value
     }
   };
 

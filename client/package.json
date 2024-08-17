@@ -18,6 +18,7 @@
     "axios": "^1.7.3",
     "express-rate-limit": "^7.4.0",
     "express-validator": "^7.1.0",
+    "formik": "^2.4.6",
     "helmet": "^7.1.0",
     "js-cookie": "^3.0.5",
     "nodemailer": "^6.9.14",
@@ -27,7 +28,8 @@
     "react-router-dom": "^6.26.0",
     "react-toastify": "^10.0.5",
     "redis": "^4.7.0",
-    "vite-plugin-require": "^1.2.14"
+    "vite-plugin-require": "^1.2.14",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
