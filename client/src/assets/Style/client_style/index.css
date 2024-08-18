@@ -21,6 +21,7 @@ body {
   text-transform: capitalize;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   height: 100vh;
+  font-family: "Barlow", sans-serif;
 }
 
 .nav {
@@ -587,4 +588,197 @@ a.active {
   color: #161f23;
   font-size: 13px;
   margin-left: 10px;
+}
+
+.tour-details .main-header {
+  width: 100%;
+  height: 330px;
+  position: relative;
+}
+.tour-details .main-header .position {
+  background-color: rgba(21, 23, 24, 0.6941176471);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+.tour-details .main-header .header {
+  background-image: url("../../images/newslatter-bg.png");
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  line-height: 2;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  height: 330px;
+  padding: 20px;
+  z-index: 10;
+  margin: auto;
+}
+.tour-details .main-header .header h1 {
+  color: whitesmoke;
+  z-index: 2;
+  font-size: 40px;
+}
+.tour-details .main-header .header .links {
+  margin-top: -190px;
+  z-index: 2;
+  text-align: center;
+}
+.tour-details .main-header .header .links a {
+  color: white;
+  z-index: 2;
+  text-decoration: none;
+}
+.tour-details .main-header .header .links a span {
+  margin: 5px;
+  padding: 5px;
+}
+
+.main-section {
+  border: 2px solid green;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #ffffff;
+}
+.main-section .data-section {
+  width: 70%;
+  height: 100%;
+  padding: 20px;
+}
+.main-section .data-section .upper {
+  padding: 10px;
+}
+.main-section .data-section .upper .image1-section {
+  height: 350px;
+  border-radius: 10px;
+}
+.main-section .data-section .upper .image1-section img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+}
+.main-section .data-section .upper .title-section p {
+  font-size: 23px;
+  color: hsl(220, 69.7%, 61.18%);
+  line-height: 1.4;
+  margin-top: 20px;
+}
+.main-section .data-section .upper .title-section h1 {
+  color: #161f23;
+  font-size: 35px;
+}
+.main-section .data-section .lower-section {
+  padding: 10px;
+}
+.main-section .data-section .lower-section p {
+  font-size: 14px;
+  line-height: 2;
+}
+.main-section .data-section .lower-section .secand-images {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px;
+  width: 100%;
+  align-items: center;
+}
+.main-section .data-section .lower-section .secand-images .imag1 {
+  width: 55%;
+  margin: 10px;
+  height: 200px;
+}
+.main-section .data-section .lower-section .secand-images .imag1 img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+}
+.main-section .data-section .detail {
+  padding: 10px;
+}
+.main-section .booking-section {
+  width: 30%;
+  height: 100%;
+  padding: 20px;
+}
+.main-section .booking-section h1 {
+  background-color: #2e373d;
+  color: white;
+  font-size: 18px;
+  padding: 15px;
+  border-radius: 5px;
+  width: 105%;
+}
+.main-section .booking-section form {
+  line-height: 4;
+  padding: 10px;
+  width: 105%;
+  background-color: #fffafa;
+}
+.main-section .booking-section form input, .main-section .booking-section form textarea {
+  border: 2px solid #f4e185;
+  width: 98%;
+  padding: 8px;
+  border-radius: 5px;
+}
+.main-section .booking-section form button {
+  width: 99%;
+  padding: 5px;
+  font-size: 14px;
+  color: whitesmoke;
+  border: none;
+  height: 40px;
+  outline: none;
+  background: linear-gradient(to right, #f4e185, hsl(220, 69.7%, 61.18%));
+  text-decoration: none;
+  border-radius: 7px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-section .booking-section .related_packages {
+  width: 105%;
+  margin-top: 35px;
+  padding: 10px;
+}
+.main-section .booking-section .related_packages h1 {
+  width: 100%;
+}
+.main-section .booking-section .related_packages .card {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+.main-section .booking-section .related_packages .card .left {
+  width: 90px;
+  height: 80px;
+}
+.main-section .booking-section .related_packages .card .left img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 6px;
+}
+.main-section .booking-section .related_packages .card .text {
+  text-align: justify;
+  margin-left: 20px;
+}
+.main-section .booking-section .related_packages .card .text h3 {
+  font-size: 14px;
+}
+.main-section .booking-section .related_packages .card .text p {
+  font-size: 14px;
+  margin-top: 9px;
+}
+.main-section .booking-section .related_packages .card .text p span {
+  color: hsl(220, 69.7%, 61.18%);
 }/*# sourceMappingURL=index.css.map */

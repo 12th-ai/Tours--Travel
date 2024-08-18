@@ -34,6 +34,7 @@ body {
   text-transform: capitalize;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   height: 100vh;
+  font-family: "Barlow", sans-serif;
 }
 
 @mixin flexing {
@@ -712,3 +713,254 @@ margin-left: 10px;
 }
 
 
+.tour-details{
+  .main-header{
+  width: 100%;
+  height: 330px;
+  position: relative;
+
+  .position {
+    background-color: #151718b1;
+    height: 100%;
+    width: 100%;
+    // border: 2px solid red;
+    position: absolute;
+  }
+  // border: 2px solid green;
+  .header{
+    background-image: url("../../images/newslatter-bg.png");
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  // position: relative;
+  display:flex;
+  flex-direction: column;
+  line-height:2;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  height:330px;
+  padding: 20px;
+  z-index: 10;
+  margin: auto;
+
+  h1{
+    color: whitesmoke;
+    z-index: 2;
+    font-size: 40px;
+    
+  }
+  .links{
+    margin-top: -190px;
+    z-index: 2;
+    text-align: center;
+
+    a{
+      color: white;
+      z-index: 2;
+      text-decoration: none;
+      span{
+        margin: 5px;
+        padding:5px;
+      }
+    }
+  }
+  }
+}
+}
+
+
+.main-section{
+  border: 2px solid green;
+ display: flex;
+ justify-content: space-between;
+//  align-items: center;
+//  height: 800px;
+ padding: 20px;
+ background-color:#ffffff;
+
+ .data-section{
+  // border:3px solid red;
+  width: 70%;
+  height: 100%;
+  padding: 20px;
+
+  .upper{
+    // border:2px solid green;
+    padding: 10px;
+    .image1-section{
+      // border: 2px solid blue;
+      height: 350px;
+      border-radius: 10px;
+
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+      
+    }
+    .title-section{
+      p{
+        font-size:23px;
+        color: $used_blue;
+        line-height: 1.4;
+        margin-top: 20px;
+      }
+      h1{
+        color: #161f23;
+        font-size: 35px;
+      }
+    }
+
+  }
+
+
+  .lower-section{
+    // border: 2px solid green;
+    padding: 10px;
+    p{
+      font-size: 14px;
+      line-height: 2;
+    }
+    .secand-images{
+      // border: 2px solid yellow;
+      display: flex;
+      justify-content: space-between;
+      padding:2px;
+      width: 100%;
+      align-items: center;
+
+      .imag1{
+        // border: 2px solid red;
+        width: 55%;
+        margin:10px;
+        height: 200px;
+        img{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+
+  .detail{
+    padding: 10px;
+  }
+ }
+ .booking-section{
+  // border:2px solid blue;
+  width: 30%;
+  height: 100%;
+  padding: 20px;
+
+
+
+//  border:2px solid red;
+
+ h1{
+  background-color: #2e373d;
+  color: white;
+  font-size: 18px;
+padding: 15px;
+border-radius: 5px;
+width:105%
+
+
+
+ }
+ form{
+  // border: 2px solid red;
+   line-height:4;
+   padding:10px;
+   width:105%;
+   background-color: #fffafa;
+
+  //  box-shadow: 10px 10px 10px red;
+
+    
+   input,textarea{
+    border: 2px solid $used_yellow;
+    width: 98%;
+    padding: 8px;
+    border-radius: 5px;
+
+   }
+   button{
+    // borde9r: 82px solid red;
+    width: 99%;
+    // background-color: $used_yellow;
+    padding:5px;
+    font-size: 14px;
+    color: whitesmoke;
+    border: none;
+    height: 40px;
+    outline: none;
+    background: $grad;
+    text-decoration: none;
+    border-radius: 7px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   }
+}
+
+.related_packages{
+  // border: 2px solid red;
+  width: 105%;
+  margin-top: 35px;
+  // line-height: ;
+  h1{
+    width: 100%;
+  }
+  padding:10px;
+
+
+  .card{
+  // border: 2px solid blue;
+  margin-top: 20px;
+
+
+ display: flex;
+//  justify-content: space-between;
+ align-items: center;
+//  border: 2px solid red;
+
+ .left{
+  // border: 2px solid green;
+  width: 90px;
+  height: 80px;
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+ }
+ .text{
+  // border: 2px solid red;
+  text-align: justify;
+  margin-left: 20px;
+  h3{
+    font-size: 14px;
+  }
+  p{
+    font-size: 14px;
+    margin-top: 9px;
+
+    span{
+      color: $used_blue;
+    }
+  }
+ }
+  }
+}
+
+
+ }
+}

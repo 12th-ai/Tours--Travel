@@ -40,9 +40,10 @@ const authRoutes = require("./Router/UserRouter");
 const destinationRoutes = require('./Router/destination');
 const galleryRouter = require('./Router/Gallery');
 const summaryRoute = require('./Router/summary');
-// const UserCount = require('./Router/UserRouter'); 
+
 const tourGuideRoutes = require('./Router/tourGuideRoutes');
 const tourPackageRoutes = require('./Router/tourPackageRoutes');
+const BookingRoutes = require('./Router/Booking');
 
 app.use('/api/testimonials', testimonialRoutes);
 app.use('/api/auth', authRoutes);
@@ -51,7 +52,8 @@ app.use('/api/gallery', galleryRouter);
 app.use('/api/tour-guides', tourGuideRoutes);
 app.use('/api/tour-packages', tourPackageRoutes);
 app.use('/api', authRoutes);
-app.use('/api',summaryRoute)
+app.use('/api',summaryRoute);
+app.use('/api',BookingRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
