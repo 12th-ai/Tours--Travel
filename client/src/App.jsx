@@ -35,6 +35,7 @@ import TextEditor from "./pages/Client/About";
 import ViewUsers from "./Component/Dashboard/Auth/ViewUser";
 import AddNewUser from "./Component/Dashboard/Auth/AddNewUser";
 import Setting from "./Component/Dashboard/Auth/Settings";
+import TourDetail from "./Component/TourDetail";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,11 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <TextEditor />,
+      },
+
+      {
+        path:'packagedetails',
+        element:<TourDetail />,
       },
     ],
   },

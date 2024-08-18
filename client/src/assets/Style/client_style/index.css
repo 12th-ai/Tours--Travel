@@ -443,89 +443,148 @@ a.active {
   -webkit-text-fill-color: transparent;
 }
 
-.package {
-  border: 2px solid red;
+.tour_package {
+  width: 100%;
+  background-color: rgb(242, 247, 251);
 }
-
-.package-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+.tour_package .header {
+  width: 100%;
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.tour_package .header a {
+  width: 15%;
+  padding: 8px;
+  font-size: 16px;
+  color: whitesmoke;
+  border: none;
+  height: 45px;
+  outline: none;
+  background: linear-gradient(to right, #f4e185, hsl(220, 69.7%, 61.18%));
+  text-decoration: none;
+  border-radius: 7px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+.tour_package .header .left {
+  width: 50%;
+  font-size: 30px;
+}
+.tour_package .header .left h1 {
+  font-size: 18px;
+  color: #161f23;
+  font-size: 25px;
+}
+.tour_package .header .left p {
+  line-height: 1.5;
+  font-size: 14px;
+  text-align: justify;
   margin-top: 20px;
 }
 
-.package-card {
-  background-color: #fff;
+.data-card {
+  text-align: center;
+  padding: 40px;
+}
+.data-card span {
+  color: #2c393e;
+  font-size: 20px;
+  text-align: center;
+}
+.data-card .package-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 10px;
+  gap: 5px;
+  row-gap: 20px;
+}
+.data-card .package-grid a {
+  text-decoration: none;
+}
+.data-card .package-grid .package-card {
+  margin: 8px;
+  background-color: #ffffff;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease;
+  position: relative;
 }
-.package-card:hover {
-  transform: translateY(-5px);
-}
-
-.package-image {
+.data-card .package-grid .package-card .images {
   width: 100%;
-  height: 200px;
+  height: 240px;
+}
+.data-card .package-grid .package-card .images img {
+  width: 100%;
+  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.curve {
+  background: linear-gradient(to right, #f4e185, hsl(220, 69.7%, 61.18%));
+  padding: 6px;
+  color: white;
+  text-decoration: none;
+  width: 40%;
+  margin: auto;
+  position: absolute;
+  left: 10%;
+  top: 55%;
+  transform: skew(30deg);
+}
+.curve p {
+  font-size: 13px;
 }
 
 .package-details {
-  padding: 15px;
-  text-align: center;
+  margin-top: 20px;
+  padding: 10px;
+  text-align: justify;
 }
-
-.package-title {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.package-date,
-.package-price {
-  font-size: 16px;
-  margin: 5px 0;
-}
-
-.book-now {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border-radius: 5px;
+.package-details h2 {
+  color: #161f23;
+  font-size: 17px;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  text-transform: capitalize;
 }
-.book-now:hover {
-  background-color: #0056b3;
-}
-
-.package-actions {
+.package-details .pricing {
   display: flex;
+  flex-direction: row-reverse;
   justify-content: space-between;
-  margin-top: 15px;
+  padding: 10px;
+  margin-top: 10px;
+  align-items: center;
 }
-
-.update-link,
-.delete-button {
+.package-details .pricing a {
+  width: 40%;
+  padding: 5px;
   font-size: 14px;
-  color: #007bff;
-  background: none;
+  color: whitesmoke;
   border: none;
-  cursor: pointer;
-  transition: color 0.3s ease;
+  height: 40px;
+  outline: none;
+  background: linear-gradient(to right, #f4e185, hsl(220, 69.7%, 61.18%));
+  text-decoration: none;
+  border-radius: 7px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.update-link:hover,
-.delete-button:hover {
-  color: #0056b3;
+.package-details .pricing .cost p {
+  color: #161f23;
+  font-size: 17px;
 }
-
-.delete-button {
-  color: #dc3545;
+.package-details .pricing .cost span {
+  color: hsl(220, 69.7%, 61.18%);
+  font-weight: bold;
 }
-.delete-button:hover {
-  color: #a71d2a;
+.package-details .pricing .cost i {
+  color: #161f23;
+  font-size: 13px;
+  margin-left: 10px;
 }/*# sourceMappingURL=index.css.map */
