@@ -30,13 +30,11 @@ import ViewTestimonial from "./Component/Dashboard/Testmonials/ViewTestimonial";
 import ForgotPassword from "./Component/Dashboard/Auth/Forgotpassword";
 import ResetPassword from "./Component/Dashboard/Auth/Resetpassword";
 import TableSummary from "./Component/Dashboard/WIdget/TableSummary";
-// import { AuthProvider } from './Context/AuthContext';
 import ViewPackageDetails from "./Component/Dashboard/Tour_package/ViewSinglePackage";
 import TextEditor from "./pages/Client/About";
 import ViewUsers from "./Component/Dashboard/Auth/ViewUser";
 import AddNewUser from "./Component/Dashboard/Auth/AddNewUser";
 import Setting from "./Component/Dashboard/Auth/Settings";
-
 
 const router = createBrowserRouter([
   {
@@ -47,10 +45,10 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />,
       },
-    {
-      path:'about',
-      element:<TextEditor />,
-    },
+      {
+        path: "about",
+        element: <TextEditor />,
+      },
     ],
   },
 
@@ -70,14 +68,14 @@ const router = createBrowserRouter([
             path: "register",
             element: <Register />,
           },
-       {
-        path:'forgot',
-        element:<ForgotPassword />
-       },
-       {
-        path:'reset',
-        element:<ResetPassword />
-       }
+          {
+            path: "forgot",
+            element: <ForgotPassword />,
+          },
+          {
+            path: "reset",
+            element: <ResetPassword />,
+          },
         ],
       },
       {
@@ -90,21 +88,21 @@ const router = createBrowserRouter([
             element: <Summary />,
           },
           {
-            path:'summary',
-            element:<TableSummary />,
+            path: "summary",
+            element: <TableSummary />,
           },
-        {
-          path:'users',
-          element:<ViewUsers />,
-        },
-        {
-          path:'addnewuser',
-          element:<AddNewUser />,
-        },
-        {
-          path:'setting',
-          element:<Setting />,
-        },
+          {
+            path: "users",
+            element: <ViewUsers />,
+          },
+          {
+            path: "addnewuser",
+            element: <AddNewUser />,
+          },
+          {
+            path: "setting",
+            element: <Setting />,
+          },
 
           {
             path: "destination",
@@ -186,8 +184,8 @@ const router = createBrowserRouter([
                 element: <UpadatePackage />,
               },
               {
-                path:'viewdetail/:id',
-                element:<ViewPackageDetails />,
+                path: "viewdetail/:id",
+                element: <ViewPackageDetails />,
               },
             ],
           },
@@ -200,9 +198,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div>
-
       <RouterProvider router={router} />
-
     </div>
   );
 }
